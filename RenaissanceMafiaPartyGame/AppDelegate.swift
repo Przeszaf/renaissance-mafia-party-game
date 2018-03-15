@@ -12,10 +12,23 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    let playerStore = PlayerStore()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let navigationController = window?.rootViewController as! UINavigationController
+        
+        let homeViewController = navigationController.topViewController as! HomeViewController
+        
+        playerStore.addPlayer(Player(name: "Przemek"))
+        playerStore.addPlayer(Player(name: "Daria"))
+        playerStore.addPlayer(Player(name: "Igor"))
+        playerStore.addPlayer(Player(name: "Koksu"))
+        playerStore.addPlayer(Player(name: "Marzena"))
+        
+        homeViewController.playerStore = playerStore
         return true
     }
 
