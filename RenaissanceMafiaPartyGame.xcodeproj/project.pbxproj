@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */; };
+		0C4D6CB3205AD3640029ED43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB2205AD3640029ED43 /* ViewController.swift */; };
+		0C4D6CB6205AD3640029ED43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB4205AD3640029ED43 /* Main.storyboard */; };
+		0C4D6CB8205AD3640029ED43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB7205AD3640029ED43 /* Assets.xcassets */; };
+		0C4D6CBB205AD3640029ED43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB9205AD3640029ED43 /* LaunchScreen.storyboard */; };
+		0C4D6CC6205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CC5205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.swift */; };
+		0C4D6CD1205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CD0205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0C4D6CC2205AD3640029ED43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C4D6CA5205AD3640029ED43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C4D6CAC205AD3640029ED43;
+			remoteInfo = RenaissanceMafiaPartyGame;
+		};
+		0C4D6CCD205AD3640029ED43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0C4D6CA5205AD3640029ED43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C4D6CAC205AD3640029ED43;
+			remoteInfo = RenaissanceMafiaPartyGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C4D6CAD205AD3640029ED43 /* RenaissanceMafiaPartyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenaissanceMafiaPartyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0C4D6CB2205AD3640029ED43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0C4D6CB5205AD3640029ED43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0C4D6CB7205AD3640029ED43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0C4D6CBA205AD3640029ED43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0C4D6CBC205AD3640029ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C4D6CC1205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenaissanceMafiaPartyGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C4D6CC5205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenaissanceMafiaPartyGameTests.swift; sourceTree = "<group>"; };
+		0C4D6CC7205AD3640029ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C4D6CCC205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RenaissanceMafiaPartyGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C4D6CD0205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenaissanceMafiaPartyGameUITests.swift; sourceTree = "<group>"; };
+		0C4D6CD2205AD3640029ED43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0C4D6CAA205AD3640029ED43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CBE205AD3640029ED43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CC9205AD3640029ED43 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0C4D6CA4205AD3640029ED43 = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CAF205AD3640029ED43 /* RenaissanceMafiaPartyGame */,
+				0C4D6CC4205AD3640029ED43 /* RenaissanceMafiaPartyGameTests */,
+				0C4D6CCF205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests */,
+				0C4D6CAE205AD3640029ED43 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0C4D6CAE205AD3640029ED43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CAD205AD3640029ED43 /* RenaissanceMafiaPartyGame.app */,
+				0C4D6CC1205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.xctest */,
+				0C4D6CCC205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0C4D6CAF205AD3640029ED43 /* RenaissanceMafiaPartyGame */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */,
+				0C4D6CB2205AD3640029ED43 /* ViewController.swift */,
+				0C4D6CB4205AD3640029ED43 /* Main.storyboard */,
+				0C4D6CB7205AD3640029ED43 /* Assets.xcassets */,
+				0C4D6CB9205AD3640029ED43 /* LaunchScreen.storyboard */,
+				0C4D6CBC205AD3640029ED43 /* Info.plist */,
+			);
+			path = RenaissanceMafiaPartyGame;
+			sourceTree = "<group>";
+		};
+		0C4D6CC4205AD3640029ED43 /* RenaissanceMafiaPartyGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CC5205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.swift */,
+				0C4D6CC7205AD3640029ED43 /* Info.plist */,
+			);
+			path = RenaissanceMafiaPartyGameTests;
+			sourceTree = "<group>";
+		};
+		0C4D6CCF205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CD0205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.swift */,
+				0C4D6CD2205AD3640029ED43 /* Info.plist */,
+			);
+			path = RenaissanceMafiaPartyGameUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0C4D6CAC205AD3640029ED43 /* RenaissanceMafiaPartyGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C4D6CD5205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGame" */;
+			buildPhases = (
+				0C4D6CA9205AD3640029ED43 /* Sources */,
+				0C4D6CAA205AD3640029ED43 /* Frameworks */,
+				0C4D6CAB205AD3640029ED43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RenaissanceMafiaPartyGame;
+			productName = RenaissanceMafiaPartyGame;
+			productReference = 0C4D6CAD205AD3640029ED43 /* RenaissanceMafiaPartyGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0C4D6CC0205AD3640029ED43 /* RenaissanceMafiaPartyGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C4D6CD8205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGameTests" */;
+			buildPhases = (
+				0C4D6CBD205AD3640029ED43 /* Sources */,
+				0C4D6CBE205AD3640029ED43 /* Frameworks */,
+				0C4D6CBF205AD3640029ED43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C4D6CC3205AD3640029ED43 /* PBXTargetDependency */,
+			);
+			name = RenaissanceMafiaPartyGameTests;
+			productName = RenaissanceMafiaPartyGameTests;
+			productReference = 0C4D6CC1205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0C4D6CCB205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0C4D6CDB205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGameUITests" */;
+			buildPhases = (
+				0C4D6CC8205AD3640029ED43 /* Sources */,
+				0C4D6CC9205AD3640029ED43 /* Frameworks */,
+				0C4D6CCA205AD3640029ED43 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0C4D6CCE205AD3640029ED43 /* PBXTargetDependency */,
+			);
+			name = RenaissanceMafiaPartyGameUITests;
+			productName = RenaissanceMafiaPartyGameUITests;
+			productReference = 0C4D6CCC205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0C4D6CA5205AD3640029ED43 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Przemyslaw Szafulski";
+				TargetAttributes = {
+					0C4D6CAC205AD3640029ED43 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					0C4D6CC0205AD3640029ED43 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0C4D6CAC205AD3640029ED43;
+					};
+					0C4D6CCB205AD3640029ED43 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0C4D6CAC205AD3640029ED43;
+					};
+				};
+			};
+			buildConfigurationList = 0C4D6CA8205AD3640029ED43 /* Build configuration list for PBXProject "RenaissanceMafiaPartyGame" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0C4D6CA4205AD3640029ED43;
+			productRefGroup = 0C4D6CAE205AD3640029ED43 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0C4D6CAC205AD3640029ED43 /* RenaissanceMafiaPartyGame */,
+				0C4D6CC0205AD3640029ED43 /* RenaissanceMafiaPartyGameTests */,
+				0C4D6CCB205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0C4D6CAB205AD3640029ED43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C4D6CBB205AD3640029ED43 /* LaunchScreen.storyboard in Resources */,
+				0C4D6CB8205AD3640029ED43 /* Assets.xcassets in Resources */,
+				0C4D6CB6205AD3640029ED43 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CBF205AD3640029ED43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CCA205AD3640029ED43 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0C4D6CA9205AD3640029ED43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C4D6CB3205AD3640029ED43 /* ViewController.swift in Sources */,
+				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CBD205AD3640029ED43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C4D6CC6205AD3640029ED43 /* RenaissanceMafiaPartyGameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0C4D6CC8205AD3640029ED43 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0C4D6CD1205AD3640029ED43 /* RenaissanceMafiaPartyGameUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0C4D6CC3205AD3640029ED43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C4D6CAC205AD3640029ED43 /* RenaissanceMafiaPartyGame */;
+			targetProxy = 0C4D6CC2205AD3640029ED43 /* PBXContainerItemProxy */;
+		};
+		0C4D6CCE205AD3640029ED43 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0C4D6CAC205AD3640029ED43 /* RenaissanceMafiaPartyGame */;
+			targetProxy = 0C4D6CCD205AD3640029ED43 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0C4D6CB4205AD3640029ED43 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C4D6CB5205AD3640029ED43 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0C4D6CB9205AD3640029ED43 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0C4D6CBA205AD3640029ED43 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0C4D6CD3205AD3640029ED43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0C4D6CD4205AD3640029ED43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0C4D6CD6205AD3640029ED43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0C4D6CD7205AD3640029ED43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0C4D6CD9205AD3640029ED43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RenaissanceMafiaPartyGame.app/RenaissanceMafiaPartyGame";
+			};
+			name = Debug;
+		};
+		0C4D6CDA205AD3640029ED43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RenaissanceMafiaPartyGame.app/RenaissanceMafiaPartyGame";
+			};
+			name = Release;
+		};
+		0C4D6CDC205AD3640029ED43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RenaissanceMafiaPartyGame;
+			};
+			name = Debug;
+		};
+		0C4D6CDD205AD3640029ED43 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RenaissanceMafiaPartyGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.przeszaf.RenaissanceMafiaPartyGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RenaissanceMafiaPartyGame;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0C4D6CA8205AD3640029ED43 /* Build configuration list for PBXProject "RenaissanceMafiaPartyGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C4D6CD3205AD3640029ED43 /* Debug */,
+				0C4D6CD4205AD3640029ED43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C4D6CD5205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C4D6CD6205AD3640029ED43 /* Debug */,
+				0C4D6CD7205AD3640029ED43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C4D6CD8205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C4D6CD9205AD3640029ED43 /* Debug */,
+				0C4D6CDA205AD3640029ED43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0C4D6CDB205AD3640029ED43 /* Build configuration list for PBXNativeTarget "RenaissanceMafiaPartyGameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0C4D6CDC205AD3640029ED43 /* Debug */,
+				0C4D6CDD205AD3640029ED43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0C4D6CA5205AD3640029ED43 /* Project object */;
+}
