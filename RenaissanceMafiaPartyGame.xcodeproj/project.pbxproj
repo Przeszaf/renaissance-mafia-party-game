@@ -27,7 +27,8 @@
 		0C4D6CFA205AE09A0029ED43 /* GameClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CF9205AE09A0029ED43 /* GameClasses.swift */; };
 		0C4D6CFC205AE7820029ED43 /* MainGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFB205AE7820029ED43 /* MainGameView.swift */; };
 		0C4D6CFE205AE8BD0029ED43 /* ShowInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */; };
-		0C4D6D00205AE9550029ED43 /* ShowInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFF205AE9550029ED43 /* ShowInfoView.swift */; };
+		0C4D6D00205AE9550029ED43 /* ShowPlayersClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */; };
+		0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +75,8 @@
 		0C4D6CF9205AE09A0029ED43 /* GameClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClasses.swift; sourceTree = "<group>"; };
 		0C4D6CFB205AE7820029ED43 /* MainGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameView.swift; sourceTree = "<group>"; };
 		0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoViewController.swift; sourceTree = "<group>"; };
-		0C4D6CFF205AE9550029ED43 /* ShowInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoView.swift; sourceTree = "<group>"; };
+		0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlayersClassView.swift; sourceTree = "<group>"; };
+		0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassPhoneView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +164,8 @@
 			children = (
 				0C4D6CEB205ADD630029ED43 /* TableViewCells */,
 				0C4D6CE1205AD5FF0029ED43 /* HomeView.swift */,
-				0C4D6CFF205AE9550029ED43 /* ShowInfoView.swift */,
+				0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */,
+				0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */,
 				0C4D6CFB205AE7820029ED43 /* MainGameView.swift */,
 			);
 			path = Views;
@@ -346,11 +349,12 @@
 				0C4D6CFE205AE8BD0029ED43 /* ShowInfoViewController.swift in Sources */,
 				0C4D6CEA205ADA630029ED43 /* PlayerStore.swift in Sources */,
 				0C4D6CFC205AE7820029ED43 /* MainGameView.swift in Sources */,
-				0C4D6D00205AE9550029ED43 /* ShowInfoView.swift in Sources */,
+				0C4D6D00205AE9550029ED43 /* ShowPlayersClassView.swift in Sources */,
 				0C4D6CF4205ADE080029ED43 /* StringExtension.swift in Sources */,
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
 				0C4D6CF2205ADDEB0029ED43 /* DateExtension.swift in Sources */,
+				0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */,
 				0C4D6CFA205AE09A0029ED43 /* GameClasses.swift in Sources */,
 				0C4D6CE2205AD5FF0029ED43 /* HomeView.swift in Sources */,
 				0C4D6CE8205ADA5D0029ED43 /* Player.swift in Sources */,

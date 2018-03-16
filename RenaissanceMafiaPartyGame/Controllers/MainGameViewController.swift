@@ -45,6 +45,7 @@ class MainGameViewController: UIViewController {
             let controller = segue.destination as! ShowInfoViewController
             controller.players = players
             controller.visibility = visibility
+            controller.playersClasses = playersClasses
         default:
             preconditionFailure("Wrong segue identifier")
         }
