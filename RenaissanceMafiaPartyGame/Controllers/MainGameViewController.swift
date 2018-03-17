@@ -11,24 +11,25 @@ import UIKit
 class MainGameViewController: UIViewController {
     
     var mainGameView: MainGameView!
+    var gameBoardView: GameBoardView!
     
     var players: [Player]!
     var chosenClasses: [GameClasses]!
     var playersClasses = [Player: GameClasses]()
     var visibility = [Player: [Player]]()
+    var playersForMission = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainGameView = MainGameView(frame: view.frame)
+        mainGameView = MainGameView(frame: view.frame, fillColors: [UIColor.red, UIColor.blue])
         view.addSubview(mainGameView)
+        mainGameView.gameBoardView.labels[0].text = "2 Players"
         
         mainGameView.button.addTarget(self, action: #selector(showInfoButtonPressed(_:)), for: .touchUpInside)
+        mainGameView.button2.addTarget(self, action: #selector(selectTeamButtonPressed(_:)), for: .touchUpInside)
         
         assignClasses()
-        
         setVisibility()
-        
-
     }
     
     
@@ -36,6 +37,10 @@ class MainGameViewController: UIViewController {
     
     @objc func showInfoButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showInfo", sender: nil)
+    }
+    
+    @objc func selectTeamButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "selectTeam", sender: nil)
     }
     
     
@@ -46,6 +51,11 @@ class MainGameViewController: UIViewController {
             controller.players = players
             controller.visibility = visibility
             controller.playersClasses = playersClasses
+        case "selectTeam"?:
+            let controller = segue.destination as! SelectTeamViewController
+            controller.players = players
+            controller.playersClasses = playersClasses
+            controller.numberOfPlayers = 2
         default:
             preconditionFailure("Wrong segue identifier")
         }

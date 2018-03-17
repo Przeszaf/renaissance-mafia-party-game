@@ -42,6 +42,7 @@
                     </view>
                     <connections>
                         <segue destination="oDJ-Gv-OwY" kind="show" identifier="showInfo" id="Usj-k6-797"/>
+                        <segue destination="ihv-4C-pOk" kind="show" identifier="selectTeam" id="lew-da-auJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mXL-kC-8dO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,6 +92,145 @@
             </objects>
             <point key="canvasLocation" x="1302" y="-797"/>
         </scene>
+        <!--Select Team View Controller-->
+        <scene sceneID="fMa-rG-ecF">
+            <objects>
+                <viewController id="ihv-4C-pOk" customClass="SelectTeamViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6wW-hO-hQ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQE-bo-igV">
+                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
+                                <connections>
+                                    <segue destination="ITw-u1-vgw" kind="embed" identifier="tableViewSegue" id="aBH-Mj-MMP"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IwT-S3-Woo">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="XVw-FD-hb1"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="VVA-ez-Vr1" kind="embed" identifier="buttonSegue" id="pZF-fm-2lh"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kQE-bo-igV" firstAttribute="top" secondItem="fdD-13-dgX" secondAttribute="top" id="3EG-2p-2lL"/>
+                            <constraint firstItem="IwT-S3-Woo" firstAttribute="top" secondItem="kQE-bo-igV" secondAttribute="bottom" id="XjS-J2-oBF"/>
+                            <constraint firstItem="IwT-S3-Woo" firstAttribute="leading" secondItem="fdD-13-dgX" secondAttribute="leading" id="hl0-XI-pNn"/>
+                            <constraint firstItem="IwT-S3-Woo" firstAttribute="bottom" secondItem="fdD-13-dgX" secondAttribute="bottom" id="m03-Iq-INj"/>
+                            <constraint firstItem="kQE-bo-igV" firstAttribute="leading" secondItem="fdD-13-dgX" secondAttribute="leading" id="on9-fv-vR6"/>
+                            <constraint firstItem="fdD-13-dgX" firstAttribute="trailing" secondItem="IwT-S3-Woo" secondAttribute="trailing" id="uT5-lN-8MX"/>
+                            <constraint firstItem="kQE-bo-igV" firstAttribute="trailing" secondItem="fdD-13-dgX" secondAttribute="trailing" id="zSX-vw-16E"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fdD-13-dgX"/>
+                    </view>
+                    <connections>
+                        <segue destination="WgN-7G-7FV" kind="show" identifier="askMissionAgreement" id="3YL-Ge-AsH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ajH-tX-87o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2213.5999999999999" y="36.431784107946029"/>
+        </scene>
+        <!--Mission Agreement View Controller-->
+        <scene sceneID="dBw-h6-X2B">
+            <objects>
+                <viewController id="WgN-7G-7FV" customClass="MissionAgreementViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kTs-Eu-RUo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cyL-OT-JGV"/>
+                    </view>
+                    <connections>
+                        <segue destination="TTo-X9-Z6F" kind="show" identifier="showMissionResult" action="showDetailViewController:sender:" id="Fts-ob-9et"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfI-j2-D8q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3068" y="38"/>
+        </scene>
+        <!--Mission Result View Controller-->
+        <scene sceneID="Deh-yE-3bw">
+            <objects>
+                <viewController id="TTo-X9-Z6F" customClass="MissionResultViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eof-cZ-ikc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-RM-mNE">
+                                <rect key="frame" x="0.0" y="64" width="375" height="563"/>
+                                <connections>
+                                    <segue destination="xMF-Pm-OyF" kind="embed" id="8xD-MF-wk3"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9W-m3-u0a">
+                                <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="h8w-cG-hN2"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="GJ1-Kd-vOw" kind="embed" id="oIu-FW-btD"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RKL-RM-mNE" firstAttribute="top" secondItem="ooY-b5-VAN" secondAttribute="top" id="9zW-Vg-e8B"/>
+                            <constraint firstItem="ooY-b5-VAN" firstAttribute="bottom" secondItem="m9W-m3-u0a" secondAttribute="bottom" id="Gim-Ry-9hs"/>
+                            <constraint firstItem="ooY-b5-VAN" firstAttribute="trailing" secondItem="m9W-m3-u0a" secondAttribute="trailing" id="IsM-3y-aaN"/>
+                            <constraint firstItem="RKL-RM-mNE" firstAttribute="leading" secondItem="ooY-b5-VAN" secondAttribute="leading" id="J0g-s6-9oH"/>
+                            <constraint firstItem="m9W-m3-u0a" firstAttribute="leading" secondItem="ooY-b5-VAN" secondAttribute="leading" id="QHr-r0-wDu"/>
+                            <constraint firstItem="ooY-b5-VAN" firstAttribute="trailing" secondItem="RKL-RM-mNE" secondAttribute="trailing" id="ni5-Ny-laS"/>
+                            <constraint firstItem="m9W-m3-u0a" firstAttribute="top" secondItem="RKL-RM-mNE" secondAttribute="bottom" id="wEb-hd-PiO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ooY-b5-VAN"/>
+                    </view>
+                    <connections>
+                        <segue destination="3VD-dG-9fI" kind="show" identifier="missionAgreed" id="fnb-hf-4kV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b8M-il-Ok0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4005.5999999999999" y="36.431784107946029"/>
+        </scene>
+        <!--Quest Phase View Controller-->
+        <scene sceneID="P2Y-E1-XcQ">
+            <objects>
+                <viewController id="3VD-dG-9fI" customClass="QuestPhaseViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2uF-67-P3X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="uCZ-5K-4yc"/>
+                    </view>
+                    <connections>
+                        <segue destination="nQS-Jl-Icd" kind="show" identifier="showQuestResult" id="VDn-Yu-mIa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mwh-jG-RMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4919" y="38"/>
+        </scene>
+        <!--Quest Result View Controller-->
+        <scene sceneID="5pO-Rj-7bS">
+            <objects>
+                <viewController id="nQS-Jl-Icd" customClass="QuestResultViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="COK-Zj-nBq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nDc-Vf-yrD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Sv-jX-oYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5790" y="29"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="G3e-Tl-ngv">
             <objects>
@@ -108,6 +248,92 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xk9-0Q-PqW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-588" y="33"/>
+        </scene>
+        <!--Select Team Table View Controller-->
+        <scene sceneID="oXb-Hs-zYf">
+            <objects>
+                <tableViewController id="ITw-u1-vgw" customClass="SelectTeamTableViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rfb-y3-ZxE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZaD-jJ-97r">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZaD-jJ-97r" id="3bO-mp-BDS">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ITw-u1-vgw" id="12j-lP-17F"/>
+                            <outlet property="delegate" destination="ITw-u1-vgw" id="tko-Po-frl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEZ-Ta-aJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="847"/>
+        </scene>
+        <!--Mission Result Table View Controller-->
+        <scene sceneID="jFo-TM-yWq">
+            <objects>
+                <tableViewController id="xMF-Pm-OyF" customClass="MissionResultTableViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hbx-gR-sPm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="563"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tpm-bl-yHU">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpm-bl-yHU" id="tRG-Ro-yZT">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xMF-Pm-OyF" id="UxN-rC-bGe"/>
+                            <outlet property="delegate" destination="xMF-Pm-OyF" id="Dl0-qS-gJ1"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vZ1-Dt-TVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3684" y="847"/>
+        </scene>
+        <!--Select Team Button View Controller-->
+        <scene sceneID="cqJ-FI-Q7w">
+            <objects>
+                <viewController id="VVA-ez-Vr1" customClass="SelectTeamButtonViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ce5-0K-ckp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eCO-tt-YUq"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PWn-A3-tNA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2598" y="612"/>
+        </scene>
+        <!--Mission Result Button View Controller-->
+        <scene sceneID="9Wk-rR-LMa">
+            <objects>
+                <viewController id="GJ1-Kd-vOw" customClass="MissionResultButtonViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="isP-f6-dIu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Dz7-qa-3yh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2de-f4-u5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4305" y="612"/>
         </scene>
     </scenes>
 </document>

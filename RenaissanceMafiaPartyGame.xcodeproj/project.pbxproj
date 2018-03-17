@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C38DF04205D493A00EBBFFD /* QuestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */; };
+		0C38DF06205D496E00EBBFFD /* QuestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C38DF05205D496E00EBBFFD /* QuestResultView.swift */; };
 		0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */; };
 		0C4D6CB6205AD3640029ED43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB4205AD3640029ED43 /* Main.storyboard */; };
 		0C4D6CB8205AD3640029ED43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB7205AD3640029ED43 /* Assets.xcassets */; };
@@ -29,6 +31,15 @@
 		0C4D6CFE205AE8BD0029ED43 /* ShowInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */; };
 		0C4D6D00205AE9550029ED43 /* ShowPlayersClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */; };
 		0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */; };
+		0C4D6D04205C1EC00029ED43 /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */; };
+		0C4D6D08205C2EB40029ED43 /* SelectPlayersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D07205C2EB40029ED43 /* SelectPlayersCell.swift */; };
+		0C4D6D0A205C32A10029ED43 /* MissionAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */; };
+		0C4D6D0C205C32CE0029ED43 /* MissionAgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */; };
+		0C4D6D0E205C36A90029ED43 /* SelectTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */; };
+		0CBD8C61205D3D110032632F /* MissionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C60205D3D110032632F /* MissionResultViewController.swift */; };
+		0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C62205D3D730032632F /* MissionResultCell.swift */; };
+		0CBD8C65205D3FD30032632F /* QuestPhaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */; };
+		0CBD8C67205D470C0032632F /* QuestPhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C66205D470C0032632F /* QuestPhaseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestResultViewController.swift; sourceTree = "<group>"; };
+		0C38DF05205D496E00EBBFFD /* QuestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestResultView.swift; sourceTree = "<group>"; };
 		0C4D6CAD205AD3640029ED43 /* RenaissanceMafiaPartyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenaissanceMafiaPartyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C4D6CB5205AD3640029ED43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +90,15 @@
 		0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoViewController.swift; sourceTree = "<group>"; };
 		0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPlayersClassView.swift; sourceTree = "<group>"; };
 		0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassPhoneView.swift; sourceTree = "<group>"; };
+		0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
+		0C4D6D07205C2EB40029ED43 /* SelectPlayersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayersCell.swift; sourceTree = "<group>"; };
+		0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionAgreementViewController.swift; sourceTree = "<group>"; };
+		0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionAgreementView.swift; sourceTree = "<group>"; };
+		0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamViewController.swift; sourceTree = "<group>"; };
+		0CBD8C60205D3D110032632F /* MissionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResultViewController.swift; sourceTree = "<group>"; };
+		0CBD8C62205D3D730032632F /* MissionResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResultCell.swift; sourceTree = "<group>"; };
+		0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPhaseViewController.swift; sourceTree = "<group>"; };
+		0CBD8C66205D470C0032632F /* QuestPhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPhaseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,8 +187,12 @@
 				0C4D6CEB205ADD630029ED43 /* TableViewCells */,
 				0C4D6CE1205AD5FF0029ED43 /* HomeView.swift */,
 				0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */,
+				0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */,
+				0CBD8C66205D470C0032632F /* QuestPhaseView.swift */,
+				0C38DF05205D496E00EBBFFD /* QuestResultView.swift */,
 				0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */,
 				0C4D6CFB205AE7820029ED43 /* MainGameView.swift */,
+				0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +214,11 @@
 				0C4D6CE5205ADA3A0029ED43 /* AllPlayersViewController.swift */,
 				0C4D6CF7205AE0550029ED43 /* MainGameViewController.swift */,
 				0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */,
+				0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */,
+				0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */,
+				0CBD8C60205D3D110032632F /* MissionResultViewController.swift */,
+				0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */,
+				0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -196,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				0C4D6CEC205ADD970029ED43 /* AllPlayersCell.swift */,
+				0C4D6D07205C2EB40029ED43 /* SelectPlayersCell.swift */,
+				0CBD8C62205D3D730032632F /* MissionResultCell.swift */,
 				0C4D6CEE205ADDA80029ED43 /* AddPlayersCell.swift */,
 			);
 			path = TableViewCells;
@@ -349,11 +382,21 @@
 				0C4D6CFE205AE8BD0029ED43 /* ShowInfoViewController.swift in Sources */,
 				0C4D6CEA205ADA630029ED43 /* PlayerStore.swift in Sources */,
 				0C4D6CFC205AE7820029ED43 /* MainGameView.swift in Sources */,
+				0C4D6D04205C1EC00029ED43 /* GameBoardView.swift in Sources */,
+				0C38DF04205D493A00EBBFFD /* QuestResultViewController.swift in Sources */,
+				0CBD8C65205D3FD30032632F /* QuestPhaseViewController.swift in Sources */,
 				0C4D6D00205AE9550029ED43 /* ShowPlayersClassView.swift in Sources */,
 				0C4D6CF4205ADE080029ED43 /* StringExtension.swift in Sources */,
+				0C4D6D0E205C36A90029ED43 /* SelectTeamViewController.swift in Sources */,
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
+				0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */,
+				0C4D6D0A205C32A10029ED43 /* MissionAgreementViewController.swift in Sources */,
+				0C4D6D08205C2EB40029ED43 /* SelectPlayersCell.swift in Sources */,
+				0C38DF06205D496E00EBBFFD /* QuestResultView.swift in Sources */,
+				0CBD8C61205D3D110032632F /* MissionResultViewController.swift in Sources */,
 				0C4D6CF2205ADDEB0029ED43 /* DateExtension.swift in Sources */,
+				0C4D6D0C205C32CE0029ED43 /* MissionAgreementView.swift in Sources */,
 				0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */,
 				0C4D6CFA205AE09A0029ED43 /* GameClasses.swift in Sources */,
 				0C4D6CE2205AD5FF0029ED43 /* HomeView.swift in Sources */,
@@ -361,6 +404,7 @@
 				0C4D6CF8205AE0550029ED43 /* MainGameViewController.swift in Sources */,
 				0C4D6CED205ADD970029ED43 /* AllPlayersCell.swift in Sources */,
 				0C4D6CE4205AD8500029ED43 /* HomeViewController.swift in Sources */,
+				0CBD8C67205D470C0032632F /* QuestPhaseView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
