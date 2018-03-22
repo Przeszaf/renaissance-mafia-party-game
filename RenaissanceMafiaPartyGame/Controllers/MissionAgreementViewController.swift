@@ -16,7 +16,7 @@ class MissionAgreementViewController: UIViewController {
     var currentPlayer: Player!
     var players: [Player]!
     var selectedPlayers: [Player]!
-    var playersClasses: [Player: GameClasses]!
+    var playersClasses: [Player: String]!
     var playersDecision = [Player: Bool]()
     var finishedAsking = false
     
@@ -36,7 +36,7 @@ class MissionAgreementViewController: UIViewController {
         passPhoneView.alpha = 1
         view.addSubview(passPhoneView)
         
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name)"
+        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(passPhoneViewPressed(recognizer:)))
         passPhoneView.addGestureRecognizer(tapGestureRecognizer)
@@ -68,7 +68,7 @@ class MissionAgreementViewController: UIViewController {
             currentPlayer = players[0]
             finishedAsking = true
         }
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name)"
+        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         passPhoneView.isHidden = false
         UIView.animate(withDuration: 0.1, animations: {
             self.missionAgreementView.alpha = 0

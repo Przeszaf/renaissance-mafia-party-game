@@ -16,7 +16,7 @@ class ShowInfoViewController: UIViewController {
     
     var currentPlayer: Player!
     var players: [Player]!
-    var playersClasses: [Player: GameClasses]!
+    var playersClasses: [Player: String]!
     var visibility: [Player: [Player]]!
     
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class ShowInfoViewController: UIViewController {
         showPlayersClassView.classLabel.numberOfLines = 0
         showPlayersClassView.visibilityLabel.numberOfLines = 0
         
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name)"
+        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
     }
     
     @objc func tappedOnShowPlayersClassView(recognizer: UITapGestureRecognizer) {
@@ -55,7 +55,7 @@ class ShowInfoViewController: UIViewController {
             } else {
                 navigationController?.popViewController(animated: true)
             }
-            self.passPhoneView.nameLabel.text = "Pass phone to \(self.currentPlayer.name)"
+            self.passPhoneView.nameLabel.text = "Pass phone to \(self.currentPlayer.name!)"
             self.passPhoneView.isHidden = false
             UIView.animate(withDuration: 1, animations: {
                 self.passPhoneView.alpha = 1
@@ -71,12 +71,12 @@ class ShowInfoViewController: UIViewController {
     
     @objc func tappedOnPassPhoneView(recognizer: UITapGestureRecognizer) {
         self.showPlayersClassView.isHidden = false
-        self.showPlayersClassView.nameLabel.text = "Hello \(currentPlayer.name)!"
-        self.showPlayersClassView.classLabel.text = "You are \(self.playersClasses[self.currentPlayer]?.rawValue ?? "ERROR")"
+        self.showPlayersClassView.nameLabel.text = "Hello \(currentPlayer.name!)!"
+        self.showPlayersClassView.classLabel.text = "You are \(self.playersClasses[self.currentPlayer] ?? "ERROR")"
         var string = [String]()
         if let visiblePlayers = self.visibility[self.currentPlayer] {
             for visiblePlayer in visiblePlayers {
-                string.append(visiblePlayer.name)
+                string.append(visiblePlayer.name!)
             }
         }
         if !string.isEmpty {

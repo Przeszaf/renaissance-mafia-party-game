@@ -12,7 +12,7 @@ class SelectTeamViewController: UIViewController {
     
     var players: [Player]!
     var selectedPlayers = [Player]()
-    var playersClasses: [Player: GameClasses]!
+    var playersClasses: [Player: String]!
     var numberOfPlayers: Int!
     
     override func viewDidLoad() {

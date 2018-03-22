@@ -13,7 +13,7 @@ class MissionResultViewController: UIViewController {
     var players: [Player]!
     var selectedPlayers: [Player]!
     var playersDecision: [Player: Bool]!
-    var playersClasses: [Player: GameClasses]!
+    var playersClasses: [Player: String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()

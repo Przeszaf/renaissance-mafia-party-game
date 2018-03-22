@@ -15,7 +15,7 @@ class QuestPhaseViewController: UIViewController {
     
     var currentPlayer: Player!
     var selectedPlayers: [Player]!
-    var playersClasses: [Player: GameClasses]!
+    var playersClasses: [Player: String]!
     var playersDecision = [Player: Bool]()
     var finishedAsking = false
     
@@ -37,7 +37,7 @@ class QuestPhaseViewController: UIViewController {
         passPhoneView.alpha = 1
         view.addSubview(passPhoneView)
         
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name)"
+        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(passPhoneViewPressed(recognizer:)))
@@ -68,7 +68,7 @@ class QuestPhaseViewController: UIViewController {
             currentPlayer = selectedPlayers[0]
             finishedAsking = true
         }
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name)"
+        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         passPhoneView.isHidden = false
         UIView.animate(withDuration: 0.1, animations: {
             self.questPhaseView.alpha = 0
