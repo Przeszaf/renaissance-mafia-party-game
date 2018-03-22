@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func startGameButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "startGame", sender: nil)
+        performSegue(withIdentifier: "selectPlayers", sender: nil)
     }
     
     
@@ -40,16 +40,8 @@ class HomeViewController: UIViewController {
         switch segue.identifier {
         case "showAllPlayers"?:
             let _ = segue.destination as! AllPlayersViewController
-        case "startGame"?:
-            let controller = segue.destination as! MainGameViewController
-            controller.chosenClasses = GameClass.evil.array + GameClass.good.array
-            do {
-                let request = NSFetchRequest<Player>(entityName: "Player")
-                request.fetchLimit = 4
-                controller.players = try managedContext.fetch(request)
-            } catch {
-                print("Error fetching players \(error)")
-            }
+        case "selectPlayers"?:
+            let _ = segue.destination as! SelectPlayersViewController
         default:
             preconditionFailure("Wronge segue identifier!")
         }

@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let navigationController = window?.rootViewController as! UINavigationController
         
         let managedContext = persistentContainer.viewContext
         
@@ -46,6 +45,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
+            
+            let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
+            if classes.count == 0 {
+                for i in 0..<4 {
+                    let newClass = GameClass(context: managedContext)
+                    switch i {
+                    case 0:
+                        newClass.name = "Knight"
+                        newClass.isGood = true
+                        newClass.about = "One of lawful characters that know nothing."
+                    case 1:
+                        newClass.name = "Wizard"
+                        newClass.isGood = true
+                        newClass.about = "One of lawful characters that know everything about other players."
+                    case 2:
+                        newClass.name = "Bandit"
+                        newClass.isGood = false
+                        newClass.about = "Evil character that know about other evil characters"
+                    case 3:
+                        newClass.name = "Assassin"
+                        newClass.isGood = false
+                        newClass.about = "Evil character that know about other evil characters. Moreover, at the end of game you can kill Merlin."
+                    default:
+                        newClass.name = "Other"
+                    }
+                }
+            }
+            print(classes)
             try managedContext.save()
         } catch {
             print("Error creating players. \(error)")

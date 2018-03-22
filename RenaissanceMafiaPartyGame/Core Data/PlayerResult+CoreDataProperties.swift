@@ -18,8 +18,8 @@ extension PlayerResult {
     }
 
     @NSManaged public var win: Bool
-    @NSManaged public var gameClass: String?
     @NSManaged public var player: Player?
     @NSManaged public var match: Match?
+    @NSManaged public var gameClass: GameClass?
 
 }

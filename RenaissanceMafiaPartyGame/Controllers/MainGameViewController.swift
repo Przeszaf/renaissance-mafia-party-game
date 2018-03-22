@@ -14,8 +14,8 @@ class MainGameViewController: UIViewController {
     var gameBoardView: GameBoardView!
     
     var players: [Player]!
-    var chosenClasses: [String]!
-    var playersClasses = [Player: String]()
+    var chosenClasses: [GameClass]!
+    var playersClasses = [Player: GameClass]()
     var visibility = [Player: [Player]]()
     var playersForMission = [Player]()
     
@@ -73,21 +73,21 @@ class MainGameViewController: UIViewController {
         for player in players {
             var visiblePlayers = [Player]()
             guard let playerClass = playersClasses[player] else { return }
-            switch playerClass {
-            case GameClass.good.knight:
+            switch playerClass.name! {
+            case "Knight":
                 visiblePlayers = [Player]()
-            case GameClass.good.wizard:
+            case "Wizard":
                 for (anotherPlayer, anotherPlayerClass) in playersClasses {
                     if anotherPlayer != player {
-                        if anotherPlayerClass == GameClass.good.knight {
+                        if anotherPlayerClass.name == "Knight" {
                             visiblePlayers.append(anotherPlayer)
                         }
                     }
                 }
-            case GameClass.evil.assassin, GameClass.evil.bandit:
+            case "Assassin", "Bandit":
                 for (anotherPlayer, anotherPlayerClass) in playersClasses {
                     if anotherPlayer != player {
-                        if anotherPlayerClass == GameClass.evil.bandit || anotherPlayerClass == GameClass.evil.assassin {
+                        if anotherPlayerClass.name == "Bandit" || anotherPlayerClass.name == "Assassin" {
                             visiblePlayers.append(anotherPlayer)
                         }
                     }

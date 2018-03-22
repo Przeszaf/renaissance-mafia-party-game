@@ -1,26 +1,25 @@
 //
-//  SelectTeamViewController.swift
+//  SelectPlayersViewController.swift
 //  RenaissanceMafiaPartyGame
 //
-//  Created by Przemyslaw Szafulski on 16/03/2018.
+//  Created by Przemyslaw Szafulski on 22/03/2018.
 //  Copyright © 2018 Przemyslaw Szafulski. All rights reserved.
 //
 
 import UIKit
+import CoreData
 
-class SelectTeamViewController: UIViewController {
+
+class SelectPlayersViewController: UIViewController {
     
-    var players: [Player]!
     var selectedPlayers = [Player]()
-    var playersClasses: [Player: GameClass]!
     var numberOfPlayers: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tableView = self.childViewControllers.first as! SelectTeamTableViewController
-        tableView.players = players
-        tableView.numberOfPlayers = numberOfPlayers
-        tableView.selectTeamViewController = self
+        
+        let tableView = self.childViewControllers.first as! SelectPlayersTableViewController
+        tableView.selectPlayersViewController = self
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
         buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
@@ -35,29 +34,28 @@ class SelectTeamViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         sender.backgroundColor = UIColor.blue
-        if selectedPlayers.count == numberOfPlayers {
-            performSegue(withIdentifier: "askMissionAgreement", sender: self)
+        if selectedPlayers.count >= 2 {
+            performSegue(withIdentifier: "selectClasses", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "askMissionAgreement" {
-            let controller = segue.destination as! MissionAgreementViewController
-            controller.players = players
+        if segue.identifier == "selectClasses" {
+            let controller = segue.destination as! SelectClassesViewController
             controller.selectedPlayers = selectedPlayers
-            controller.playersClasses = playersClasses
         }
     }
 }
 
 
-
-class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
+class SelectPlayersTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var players: [Player]!
-    var numberOfPlayers: Int!
+    var selectedPlayers = [Player]()
     
-    var selectTeamViewController: SelectTeamViewController!
+    var managedContext: NSManagedObjectContext!
+    
+    var selectPlayersViewController: SelectPlayersViewController!
     
     //MARK: - Overriding functions
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +69,14 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
         tableView.register(SelectPlayersCell.self, forCellReuseIdentifier: "SelectPlayersCell")
         tableView.rowHeight = 50
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        managedContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            players = try managedContext.fetch(Player.fetchRequest())
+        } catch {
+            print("Error fetching players \(error)")
+        }
     }
     
     
@@ -78,10 +84,10 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let player = players[indexPath.row]
-        if selectTeamViewController.selectedPlayers.index(of: player) != nil {
+        if selectPlayersViewController.selectedPlayers.index(of: player) != nil {
             return indexPath
         }
-        if selectTeamViewController.selectedPlayers.count == numberOfPlayers {
+        if selectPlayersViewController.selectedPlayers.count == 10 {
             return nil
         }
         return indexPath
@@ -106,15 +112,13 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let player = players[indexPath.row]
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        if let index = selectTeamViewController.selectedPlayers.index(of: player) {
-            selectTeamViewController.selectedPlayers.remove(at: index)
+        if let index = selectPlayersViewController.selectedPlayers.index(of: player) {
+            selectPlayersViewController.selectedPlayers.remove(at: index)
             cell.accessoryType = .none
         } else {
-            selectTeamViewController.selectedPlayers.append(player)
+            selectPlayersViewController.selectedPlayers.append(player)
             cell.accessoryType = .checkmark
         }
     }
     
-    
 }
-

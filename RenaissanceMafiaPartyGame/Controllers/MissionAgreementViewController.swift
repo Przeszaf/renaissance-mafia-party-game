@@ -16,7 +16,7 @@ class MissionAgreementViewController: UIViewController {
     var currentPlayer: Player!
     var players: [Player]!
     var selectedPlayers: [Player]!
-    var playersClasses: [Player: String]!
+    var playersClasses: [Player: GameClass]!
     var playersDecision = [Player: Bool]()
     var finishedAsking = false
     

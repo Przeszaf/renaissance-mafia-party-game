@@ -16,7 +16,7 @@ class ShowInfoViewController: UIViewController {
     
     var currentPlayer: Player!
     var players: [Player]!
-    var playersClasses: [Player: String]!
+    var playersClasses: [Player: GameClass]!
     var visibility: [Player: [Player]]!
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class ShowInfoViewController: UIViewController {
     @objc func tappedOnPassPhoneView(recognizer: UITapGestureRecognizer) {
         self.showPlayersClassView.isHidden = false
         self.showPlayersClassView.nameLabel.text = "Hello \(currentPlayer.name!)!"
-        self.showPlayersClassView.classLabel.text = "You are \(self.playersClasses[self.currentPlayer] ?? "ERROR")"
+        self.showPlayersClassView.classLabel.text = "You are \(self.playersClasses[self.currentPlayer]?.name! ?? "ERROR")"
         var string = [String]()
         if let visiblePlayers = self.visibility[self.currentPlayer] {
             for visiblePlayer in visiblePlayers {

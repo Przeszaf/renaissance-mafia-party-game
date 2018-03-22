@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0C0FC213206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC211206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld */; };
-		0C0FC216206407A200B9B71D /* GameClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC215206407A200B9B71D /* GameClass.swift */; };
 		0C0FC21D206407F400B9B71D /* PlayerResult+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC217206407F400B9B71D /* PlayerResult+CoreDataClass.swift */; };
 		0C0FC21E206407F400B9B71D /* PlayerResult+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC218206407F400B9B71D /* PlayerResult+CoreDataProperties.swift */; };
 		0C0FC21F206407F400B9B71D /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC219206407F400B9B71D /* Player+CoreDataClass.swift */; };
@@ -16,6 +15,13 @@
 		0C0FC221206407F400B9B71D /* Match+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC21B206407F400B9B71D /* Match+CoreDataClass.swift */; };
 		0C0FC222206407F400B9B71D /* Match+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC21C206407F400B9B71D /* Match+CoreDataProperties.swift */; };
 		0C0FC22420640AFA00B9B71D /* NSDateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22320640AFA00B9B71D /* NSDateExtension.swift */; };
+		0C0FC22620640D5900B9B71D /* SelectPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22520640D5900B9B71D /* SelectPlayersViewController.swift */; };
+		0C0FC22820640E9700B9B71D /* SelectClassesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22720640E9700B9B71D /* SelectClassesViewController.swift */; };
+		0C0FC22A206412F000B9B71D /* TableButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC229206412F000B9B71D /* TableButtonViewController.swift */; };
+		0C0FC22C2064134B00B9B71D /* GameClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22B2064134B00B9B71D /* GameClassCell.swift */; };
+		0C0FC22F20641A8700B9B71D /* GameClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22D20641A8700B9B71D /* GameClass+CoreDataClass.swift */; };
+		0C0FC23020641A8700B9B71D /* GameClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC22E20641A8700B9B71D /* GameClass+CoreDataProperties.swift */; };
+		0C0FC2322064223000B9B71D /* ClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C0FC2312064223000B9B71D /* ClassDetailViewController.swift */; };
 		0C38DF04205D493A00EBBFFD /* QuestResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */; };
 		0C38DF06205D496E00EBBFFD /* QuestResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C38DF05205D496E00EBBFFD /* QuestResultView.swift */; };
 		0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6CB0205AD3640029ED43 /* AppDelegate.swift */; };
@@ -67,7 +73,6 @@
 
 /* Begin PBXFileReference section */
 		0C0FC212206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RenaissanceMafiaPartyGame.xcdatamodel; sourceTree = "<group>"; };
-		0C0FC215206407A200B9B71D /* GameClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClass.swift; sourceTree = "<group>"; };
 		0C0FC217206407F400B9B71D /* PlayerResult+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerResult+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0C0FC218206407F400B9B71D /* PlayerResult+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlayerResult+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0C0FC219206407F400B9B71D /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Player+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -75,6 +80,13 @@
 		0C0FC21B206407F400B9B71D /* Match+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0C0FC21C206407F400B9B71D /* Match+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Match+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0C0FC22320640AFA00B9B71D /* NSDateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateExtension.swift; sourceTree = "<group>"; };
+		0C0FC22520640D5900B9B71D /* SelectPlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlayersViewController.swift; sourceTree = "<group>"; };
+		0C0FC22720640E9700B9B71D /* SelectClassesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectClassesViewController.swift; sourceTree = "<group>"; };
+		0C0FC229206412F000B9B71D /* TableButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableButtonViewController.swift; sourceTree = "<group>"; };
+		0C0FC22B2064134B00B9B71D /* GameClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameClassCell.swift; sourceTree = "<group>"; };
+		0C0FC22D20641A8700B9B71D /* GameClass+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameClass+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0C0FC22E20641A8700B9B71D /* GameClass+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0C0FC2312064223000B9B71D /* ClassDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailViewController.swift; sourceTree = "<group>"; };
 		0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestResultViewController.swift; sourceTree = "<group>"; };
 		0C38DF05205D496E00EBBFFD /* QuestResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestResultView.swift; sourceTree = "<group>"; };
 		0C4D6CAD205AD3640029ED43 /* RenaissanceMafiaPartyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenaissanceMafiaPartyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +153,8 @@
 		0C0FC2142064079000B9B71D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				0C0FC22D20641A8700B9B71D /* GameClass+CoreDataClass.swift */,
+				0C0FC22E20641A8700B9B71D /* GameClass+CoreDataProperties.swift */,
 				0C0FC217206407F400B9B71D /* PlayerResult+CoreDataClass.swift */,
 				0C0FC218206407F400B9B71D /* PlayerResult+CoreDataProperties.swift */,
 				0C0FC219206407F400B9B71D /* Player+CoreDataClass.swift */,
@@ -148,7 +162,6 @@
 				0C0FC21B206407F400B9B71D /* Match+CoreDataClass.swift */,
 				0C0FC21C206407F400B9B71D /* Match+CoreDataProperties.swift */,
 				0C0FC211206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld */,
-				0C0FC215206407A200B9B71D /* GameClass.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -229,9 +242,13 @@
 			children = (
 				0C4D6CE3205AD8500029ED43 /* HomeViewController.swift */,
 				0C4D6CE5205ADA3A0029ED43 /* AllPlayersViewController.swift */,
+				0C0FC22520640D5900B9B71D /* SelectPlayersViewController.swift */,
+				0C0FC22720640E9700B9B71D /* SelectClassesViewController.swift */,
+				0C0FC2312064223000B9B71D /* ClassDetailViewController.swift */,
 				0C4D6CF7205AE0550029ED43 /* MainGameViewController.swift */,
 				0C4D6CFD205AE8BD0029ED43 /* ShowInfoViewController.swift */,
 				0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */,
+				0C0FC229206412F000B9B71D /* TableButtonViewController.swift */,
 				0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */,
 				0CBD8C60205D3D110032632F /* MissionResultViewController.swift */,
 				0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */,
@@ -246,6 +263,7 @@
 				0C4D6CEC205ADD970029ED43 /* AllPlayersCell.swift */,
 				0C4D6D07205C2EB40029ED43 /* SelectPlayersCell.swift */,
 				0CBD8C62205D3D730032632F /* MissionResultCell.swift */,
+				0C0FC22B2064134B00B9B71D /* GameClassCell.swift */,
 				0C4D6CEE205ADDA80029ED43 /* AddPlayersCell.swift */,
 			);
 			path = TableViewCells;
@@ -395,7 +413,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C0FC216206407A200B9B71D /* GameClass.swift in Sources */,
 				0C4D6CEF205ADDA80029ED43 /* AddPlayersCell.swift in Sources */,
 				0C4D6CF6205ADE450029ED43 /* Constants.swift in Sources */,
 				0C4D6CFE205AE8BD0029ED43 /* ShowInfoViewController.swift in Sources */,
@@ -405,6 +422,8 @@
 				0C0FC21F206407F400B9B71D /* Player+CoreDataClass.swift in Sources */,
 				0C38DF04205D493A00EBBFFD /* QuestResultViewController.swift in Sources */,
 				0CBD8C65205D3FD30032632F /* QuestPhaseViewController.swift in Sources */,
+				0C0FC22C2064134B00B9B71D /* GameClassCell.swift in Sources */,
+				0C0FC2322064223000B9B71D /* ClassDetailViewController.swift in Sources */,
 				0C4D6D00205AE9550029ED43 /* ShowPlayersClassView.swift in Sources */,
 				0C0FC220206407F400B9B71D /* Player+CoreDataProperties.swift in Sources */,
 				0C0FC213206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld in Sources */,
@@ -413,18 +432,23 @@
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
 				0C0FC21D206407F400B9B71D /* PlayerResult+CoreDataClass.swift in Sources */,
+				0C0FC22F20641A8700B9B71D /* GameClass+CoreDataClass.swift in Sources */,
 				0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */,
 				0C4D6D0A205C32A10029ED43 /* MissionAgreementViewController.swift in Sources */,
 				0C4D6D08205C2EB40029ED43 /* SelectPlayersCell.swift in Sources */,
 				0C38DF06205D496E00EBBFFD /* QuestResultView.swift in Sources */,
+				0C0FC23020641A8700B9B71D /* GameClass+CoreDataProperties.swift in Sources */,
 				0CBD8C61205D3D110032632F /* MissionResultViewController.swift in Sources */,
 				0C4D6CF2205ADDEB0029ED43 /* DateExtension.swift in Sources */,
 				0C0FC222206407F400B9B71D /* Match+CoreDataProperties.swift in Sources */,
 				0C4D6D0C205C32CE0029ED43 /* MissionAgreementView.swift in Sources */,
+				0C0FC22A206412F000B9B71D /* TableButtonViewController.swift in Sources */,
 				0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */,
+				0C0FC22620640D5900B9B71D /* SelectPlayersViewController.swift in Sources */,
 				0C0FC21E206407F400B9B71D /* PlayerResult+CoreDataProperties.swift in Sources */,
 				0C0FC22420640AFA00B9B71D /* NSDateExtension.swift in Sources */,
 				0C4D6CE2205AD5FF0029ED43 /* HomeView.swift in Sources */,
+				0C0FC22820640E9700B9B71D /* SelectClassesViewController.swift in Sources */,
 				0C4D6CF8205AE0550029ED43 /* MainGameViewController.swift in Sources */,
 				0C4D6CED205ADD970029ED43 /* AllPlayersCell.swift in Sources */,
 				0C4D6CE4205AD8500029ED43 /* HomeViewController.swift in Sources */,
