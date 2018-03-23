@@ -22,8 +22,6 @@ class QuestPhaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentPlayer = selectedPlayers[0]
-        
-        print(selectedPlayers)
         questPhaseView = QuestPhaseView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(questPhaseView)
         questPhaseView.isHidden = true

@@ -15,7 +15,6 @@ class TableButtonViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
         button = UIButton(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
-        print(button.frame)
         button.setTitle("NEXT", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.setTitleColor(UIColor.white, for: .highlighted)

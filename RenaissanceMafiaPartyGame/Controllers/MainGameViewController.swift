@@ -11,7 +11,6 @@ import UIKit
 class MainGameViewController: UIViewController {
     
     var mainGameView: MainGameView!
-    var gameBoardView: GameBoardView!
     
     var players: [Player]!
     var chosenClasses: [GameClass]!

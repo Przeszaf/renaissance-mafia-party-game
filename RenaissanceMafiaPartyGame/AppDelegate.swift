@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     }
                 }
             }
-            print(classes)
             try managedContext.save()
         } catch {
             print("Error creating players. \(error)")

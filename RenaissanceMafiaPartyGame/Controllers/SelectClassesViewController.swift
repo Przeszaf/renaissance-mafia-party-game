@@ -99,6 +99,7 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
         cell.nameLabel.text = classes[indexPath.row].name!
         cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
         cell.descriptionLabel.text = classes[indexPath.row].about!
+        cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         return cell
@@ -129,6 +130,13 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    
+    @objc func showClassDetails(_ sender: UIButtonType) {
+        let classDetails = ClassDetailViewController()
+        classDetails.modalPresentationStyle = .overCurrentContext
+        self.present(classDetails, animated: true, completion: nil)
     }
     
     

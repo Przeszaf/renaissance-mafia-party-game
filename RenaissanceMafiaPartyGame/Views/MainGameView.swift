@@ -57,8 +57,5 @@ class MainGameView: UIView {
         gameBoardView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         gameBoardView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
         gameBoardView.heightAnchor.constraint(equalToConstant: 500).isActive = true
-        
-        
-        print(gameBoardView.frame)
     }
 }

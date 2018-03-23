@@ -18,8 +18,6 @@ class MissionResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(selectedPlayers)
-        
         let buttonViewController = childViewControllers.last! as! TableButtonViewController
         buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
         

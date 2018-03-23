@@ -155,6 +155,7 @@
                     </view>
                     <connections>
                         <segue destination="1Bf-fe-fwB" kind="show" identifier="startGame" id="dYF-iW-aAV"/>
+                        <segue destination="iOW-GM-MI2" kind="presentation" identifier="classDetails" id="SAa-Dw-5wE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZCm-to-1Ec" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -207,6 +208,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Nk-as-PUB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1167" y="-806"/>
+        </scene>
+        <!--Class Detail View Controller-->
+        <scene sceneID="Llx-uJ-gT8">
+            <objects>
+                <viewController id="iOW-GM-MI2" customClass="ClassDetailViewController" customModule="RenaissanceMafiaPartyGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IrQ-mp-hPP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Mib-ol-UYk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ab-yh-X4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521" y="-745"/>
         </scene>
         <!--Show Info View Controller-->
         <scene sceneID="50e-tg-Ir8">
