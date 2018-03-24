@@ -10,10 +10,10 @@ import UIKit
 
 class MissionResultViewController: UIViewController {
     
-    var players: [Player]!
+    var roundInfo: RoundInfo!
+    var gameInfo: GameInfo!
     var selectedPlayers: [Player]!
-    var playersDecision: [Player: Bool]!
-    var playersClasses: [Player: GameClass]!
+    var selectedTeamGoes: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,19 +22,45 @@ class MissionResultViewController: UIViewController {
         buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
         
         let tableViewController = childViewControllers.first! as! MissionResultTableViewController
-        tableViewController.players = players
-        tableViewController.playersDecision = playersDecision
+        tableViewController.players = gameInfo.players
+        tableViewController.playersMissionDecision = roundInfo.playersMissionDecision
+        
+        var teamAccepted = 0
+        var teamNotAccepted = 0
+        for (_, decision) in roundInfo.playersMissionDecision {
+            if decision == true {
+                teamAccepted += 1
+            } else {
+                teamNotAccepted += 1
+            }
+        }
+        if teamAccepted < teamNotAccepted {
+            selectedTeamGoes = false
+            roundInfo.failedMissionsCount += 1
+        } else {
+            selectedTeamGoes = true
+        }
+        
     }
     
     @objc func nextButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "missionAgreed", sender: self)
+        if selectedTeamGoes == true {
+            performSegue(withIdentifier: "missionAgreed", sender: self)
+        } else {
+            gameInfo.nextLeader()
+            let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainGameViewController") as! MainGameViewController
+            mainVC.roundInfo = roundInfo
+            mainVC.gameInfo = gameInfo
+            show(mainVC, sender: self)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "missionAgreed" {
             let controller = segue.destination as! QuestPhaseViewController
             controller.selectedPlayers = selectedPlayers
-            controller.playersClasses = playersClasses
+            controller.roundInfo = roundInfo
+            controller.gameInfo = gameInfo
         }
     }
 }
@@ -42,7 +68,7 @@ class MissionResultViewController: UIViewController {
 class MissionResultTableViewController: UITableViewController {
     
     var players: [Player]!
-    var playersDecision: [Player: Bool]!
+    var playersMissionDecision: [Player: Bool]!
     
     //MARK: - Overriding functions
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +93,7 @@ class MissionResultTableViewController: UITableViewController {
         let player = players[indexPath.row]
         cell.playerNameLabel.text = player.name
         
-        let decision = playersDecision[player]
+        let decision = playersMissionDecision[player]
         if decision == true {
             cell.decisionLabel.text = "Agree"
             cell.decisionLabel.textColor = UIColor.green

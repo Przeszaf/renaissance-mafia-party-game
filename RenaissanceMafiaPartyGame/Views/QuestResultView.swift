@@ -22,6 +22,8 @@ class QuestResultView: UIView {
         resultLabel.textColor = UIColor.black
         failuresCountLabel.font = UIFont.boldSystemFont(ofSize: 24)
         failuresCountLabel.textColor = UIColor.red
+        resultLabel.numberOfLines = 0
+        failuresCountLabel.numberOfLines = 0
     }
     
     required init?(coder aDecoder: NSCoder) {

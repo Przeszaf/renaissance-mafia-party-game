@@ -1,49 +1,52 @@
 //
-//  SelectClassesViewController.swift
+//  ShowGameInfoViewController.swift
 //  RenaissanceMafiaPartyGame
 //
-//  Created by Przemyslaw Szafulski on 22/03/2018.
+//  Created by Przemyslaw Szafulski on 24/03/2018.
 //  Copyright © 2018 Przemyslaw Szafulski. All rights reserved.
 //
+
+import UIKit
 
 import UIKit
 import CoreData
 
 
-class SelectClassesViewController: UIViewController {
+class ShowGameInfoViewController: UIViewController {
     
-    var selectedPlayers: [Player]!
-    var selectedClasses = [GameClass]()
-    var classes: [GameClass]!
+    var gameInfo: GameInfo!
+    var goodClasses = [GameClass]()
+    var evilClasses = [GameClass]()
+    var goodClassesCount = 0
+    var evilClassesCount = 0
     
     var managedContext: NSManagedObjectContext!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        managedContext = appDelegate.persistentContainer.viewContext
-        
-        do {
-            let fetchedClasses: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
-            classes = fetchedClasses.sorted(by: { (firstClass, secondClass) -> Bool in
-                if firstClass.name == "Bandit" || firstClass.name == "Knight" {
-                    return false
-                }
-                return true
-            })
-        } catch {
-            print("Error fetching classes \(error)")
+        for gameClass in gameInfo.classes {
+            if gameClass.isGood {
+                goodClasses.append(gameClass)
+            } else {
+                evilClasses.append(gameClass)
+                print(evilClasses.map({$0.name!}))
+            }
         }
         
-        let tableView = self.childViewControllers.first as! SelectClassesTableViewController
-        tableView.selectClassesViewController = self
-        tableView.classes = classes
+        
+        let tableView = self.childViewControllers.first as! ShowGameInfoTableViewController
+        tableView.evilClasses = evilClasses
+        tableView.goodClasses = goodClasses
+        
+        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
+        headerView.textLabel.text = "You are playing with classes listed below."
+        tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
         buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
         buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
+        
     }
     
     @objc func nextButtonHoldDown(_ sender: UIButton) {
@@ -52,27 +55,25 @@ class SelectClassesViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         sender.backgroundColor = UIColor.blue
-        if selectedClasses.count < selectedPlayers.count {
-            selectedClasses.append(classes.last!)
+        if gameInfo.classes.count < gameInfo.players.count {
         } else {
-            performSegue(withIdentifier: "startGame", sender: self)
+            performSegue(withIdentifier: "showClassInfo", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "startGame" {
-            let controller = segue.destination as! MainGameViewController
-            controller.players = selectedPlayers
-            controller.chosenClasses = selectedClasses
+        if segue.identifier == "showClassInfo" {
+            let controller = segue.destination as! ShowClassInfoViewController
+            controller.gameInfo = gameInfo
         }
     }
 }
 
 
-class SelectClassesTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
+class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
-    var classes: [GameClass]!
-    var selectClassesViewController: SelectClassesViewController!
+    var evilClasses: [GameClass]!
+    var goodClasses: [GameClass]!
     
     //MARK: - Overriding functions
     override func viewWillAppear(_ animated: Bool) {
@@ -82,11 +83,8 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Registering cells so we can use them
-        //FIXME: Change cells to better
         tableView.register(GameClassCell.self, forCellReuseIdentifier: "GameClassCell")
         tableView.rowHeight = 50
-        
     }
     
     
@@ -96,9 +94,14 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameClassCell", for: indexPath) as! GameClassCell
         
-        cell.nameLabel.text = classes[indexPath.row].name!
+        if indexPath.section == 0 {
+            cell.nameLabel.text = goodClasses[indexPath.row].name!
+            cell.descriptionLabel.text = goodClasses[indexPath.row].about!
+        } else if indexPath.section == 1 {
+            cell.nameLabel.text = evilClasses[indexPath.row].name!
+            cell.descriptionLabel.text = evilClasses[indexPath.row].about!
+        }
         cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
-        cell.descriptionLabel.text = classes[indexPath.row].about!
         cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
@@ -106,27 +109,31 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classes.count
+        if section == 0 {
+            return goodClasses.count
+        } else if section == 1 {
+            return evilClasses.count
+        }
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if indexPath.row >= classes.count - 2 {
-            return nil
-        }
-        return indexPath
+        return nil
     }
     
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        if let index = selectClassesViewController.selectedClasses.index(of: classes[indexPath.row]) {
-            selectClassesViewController.selectedClasses.remove(at: index)
-            cell.accessoryType = .none
-        } else {
-            selectClassesViewController.selectedClasses.append(classes[indexPath.row])
-            cell.accessoryType = .checkmark
-        }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Good classes"
+        } else if section == 1 {
+            return "Evil classes"
+        }
+        return nil
+    }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
@@ -136,8 +143,7 @@ class SelectClassesTableViewController: UITableViewController, UITextViewDelegat
     @objc func showClassDetails(_ sender: UIButtonType) {
         let classDetails = ClassDetailViewController()
         classDetails.modalPresentationStyle = .overCurrentContext
+        classDetails.modalTransitionStyle = .crossDissolve
         self.present(classDetails, animated: true, completion: nil)
     }
-    
-    
 }

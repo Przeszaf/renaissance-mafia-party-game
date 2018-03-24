@@ -10,17 +10,22 @@ import UIKit
 
 class SelectTeamViewController: UIViewController {
     
-    var players: [Player]!
-    var selectedPlayers = [Player]()
-    var playersClasses: [Player: GameClass]!
+    var gameInfo: GameInfo!
+    var roundInfo: RoundInfo!
     var numberOfPlayers: Int!
+    var selectedPlayers = [Player]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let tableView = self.childViewControllers.first as! SelectTeamTableViewController
-        tableView.players = players
+        tableView.players = gameInfo.players
         tableView.numberOfPlayers = numberOfPlayers
         tableView.selectTeamViewController = self
+        
+        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
+        headerView.textLabel.text = "Hello \(gameInfo.currentLeader.name!)! Select \(numberOfPlayers!) that should go on mission!"
+        tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
         buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
@@ -43,9 +48,9 @@ class SelectTeamViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "askMissionAgreement" {
             let controller = segue.destination as! MissionAgreementViewController
-            controller.players = players
+            controller.roundInfo = roundInfo
+            controller.gameInfo = gameInfo
             controller.selectedPlayers = selectedPlayers
-            controller.playersClasses = playersClasses
         }
     }
 }
@@ -70,7 +75,6 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
         //Registering cells so we can use them
         tableView.register(SelectPlayersCell.self, forCellReuseIdentifier: "SelectPlayersCell")
         tableView.rowHeight = 50
-        
     }
     
     

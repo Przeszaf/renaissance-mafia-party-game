@@ -12,8 +12,7 @@ import CoreData
 
 class SelectPlayersViewController: UIViewController {
     
-    var selectedPlayers = [Player]()
-    var numberOfPlayers: Int!
+    let gameInfo = GameInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class SelectPlayersViewController: UIViewController {
         buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
         buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
         
-        
     }
     
     @objc func nextButtonHoldDown(_ sender: UIButton) {
@@ -34,15 +32,16 @@ class SelectPlayersViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         sender.backgroundColor = UIColor.blue
-        if selectedPlayers.count >= 2 {
-            performSegue(withIdentifier: "selectClasses", sender: self)
+        if gameInfo.players.count >= 5 {
+            performSegue(withIdentifier: "selectAdditionalClasses", sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "selectClasses" {
-            let controller = segue.destination as! SelectClassesViewController
-            controller.selectedPlayers = selectedPlayers
+        if segue.identifier == "selectAdditionalClasses" {
+            gameInfo.setClassesCount()
+            let controller = segue.destination as! SelectAdditionalClassesViewController
+            controller.gameInfo = gameInfo
         }
     }
 }
@@ -51,8 +50,6 @@ class SelectPlayersViewController: UIViewController {
 class SelectPlayersTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var players: [Player]!
-    var selectedPlayers = [Player]()
-    
     var managedContext: NSManagedObjectContext!
     
     var selectPlayersViewController: SelectPlayersViewController!
@@ -77,6 +74,10 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
         } catch {
             print("Error fetching players \(error)")
         }
+        
+        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
+        headerView.textLabel.text = "Select from 5 up to 10 players!"
+        tableView.tableHeaderView = headerView
     }
     
     
@@ -84,10 +85,10 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let player = players[indexPath.row]
-        if selectPlayersViewController.selectedPlayers.index(of: player) != nil {
+        if selectPlayersViewController.gameInfo.players.index(of: player) != nil {
             return indexPath
         }
-        if selectPlayersViewController.selectedPlayers.count == 10 {
+        if selectPlayersViewController.gameInfo.players.count == 10 {
             return nil
         }
         return indexPath
@@ -98,7 +99,11 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectPlayersCell", for: indexPath) as! SelectPlayersCell
         let player = players[indexPath.row]
         cell.playerName.text = player.name
-        
+        if let index = selectPlayersViewController.gameInfo.players.index(of: player) {
+            cell.playerPosition.text = "\(index + 1)."
+        } else {
+            cell.playerPosition.text = nil
+        }
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         return cell
@@ -111,13 +116,15 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let player = players[indexPath.row]
-        guard let cell = tableView.cellForRow(at: indexPath) else { return }
-        if let index = selectPlayersViewController.selectedPlayers.index(of: player) {
-            selectPlayersViewController.selectedPlayers.remove(at: index)
+        guard let cell = tableView.cellForRow(at: indexPath) as? SelectPlayersCell else { return }
+        if let index = selectPlayersViewController.gameInfo.players.index(of: player) {
+            selectPlayersViewController.gameInfo.players.remove(at: index)
             cell.accessoryType = .none
+            tableView.reloadData()
         } else {
-            selectPlayersViewController.selectedPlayers.append(player)
+            selectPlayersViewController.gameInfo.players.append(player)
             cell.accessoryType = .checkmark
+            cell.playerPosition.text = "\(selectPlayersViewController.gameInfo.players.count)."
         }
     }
     

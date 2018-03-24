@@ -23,6 +23,7 @@ class ShowPlayersClassView: UIView {
         nameLabel.font = font
         classLabel.font = font
         visibilityLabel.font = font
+        visibilityLabel.textAlignment = .center
         
         
     }
@@ -47,6 +48,7 @@ class ShowPlayersClassView: UIView {
         
         visibilityLabel.topAnchor.constraint(equalTo: classLabel.bottomAnchor).isActive = true
         visibilityLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        
+        visibilityLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 40).isActive = true
+        visibilityLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -40).isActive = true
     }
 }

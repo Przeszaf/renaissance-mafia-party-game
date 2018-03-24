@@ -8,21 +8,19 @@
 
 import UIKit
 
-class ShowInfoViewController: UIViewController {
+class ShowClassInfoViewController: UIViewController {
     
     var showPlayersClassView: ShowPlayersClassView!
     var passPhoneView: PassPhoneView!
     
-    
+    var gameInfo: GameInfo!
     var currentPlayer: Player!
-    var players: [Player]!
-    var playersClasses: [Player: GameClass]!
-    var visibility: [Player: [Player]]!
+    var doneShowing = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentPlayer = players.first!
+        currentPlayer = gameInfo.currentLeader
         
         showPlayersClassView = ShowPlayersClassView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(showPlayersClassView)
@@ -49,11 +47,17 @@ class ShowInfoViewController: UIViewController {
     
     @objc func tappedOnShowPlayersClassView(recognizer: UITapGestureRecognizer) {
         if recognizer.view == showPlayersClassView {
-            guard let index = players.index(of: currentPlayer) else { return }
-            if index + 1 < players.count {
-                currentPlayer = players[index + 1]
+            guard let index = gameInfo.players.index(of: currentPlayer) else { return }
+            if index + 1 < gameInfo.players.count {
+                currentPlayer = gameInfo.players[index + 1]
             } else {
-                navigationController?.popViewController(animated: true)
+                currentPlayer = gameInfo.players[0]
+            }
+            print(currentPlayer.name!)
+            print(gameInfo.currentLeader.name!)
+            if currentPlayer == gameInfo.currentLeader {
+                print("HERE")
+                doneShowing = true
             }
             self.passPhoneView.nameLabel.text = "Pass phone to \(self.currentPlayer.name!)"
             self.passPhoneView.isHidden = false
@@ -70,11 +74,14 @@ class ShowInfoViewController: UIViewController {
     
     
     @objc func tappedOnPassPhoneView(recognizer: UITapGestureRecognizer) {
+        if doneShowing {
+            performSegue(withIdentifier: "startGame", sender: self)
+        }
         self.showPlayersClassView.isHidden = false
         self.showPlayersClassView.nameLabel.text = "Hello \(currentPlayer.name!)!"
-        self.showPlayersClassView.classLabel.text = "You are \(self.playersClasses[self.currentPlayer]?.name! ?? "ERROR")"
+        self.showPlayersClassView.classLabel.text = "You are \(self.gameInfo.playersClasses[self.currentPlayer]?.name! ?? "ERROR")"
         var string = [String]()
-        if let visiblePlayers = self.visibility[self.currentPlayer] {
+        if let visiblePlayers = self.gameInfo.visibility[self.currentPlayer] {
             for visiblePlayer in visiblePlayers {
                 string.append(visiblePlayer.name!)
             }
@@ -92,5 +99,13 @@ class ShowInfoViewController: UIViewController {
         }, completion: { (finished) in
             self.passPhoneView.isHidden = true
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "startGame" {
+            let controller = segue.destination as! MainGameViewController
+            controller.gameInfo = gameInfo
+            controller.createNewRound()
+        }
     }
 }

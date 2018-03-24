@@ -56,10 +56,8 @@ class GameBoardView: UIView {
             shapeLayer.position = CGPoint(x: 0, y: 0)
             self.layer.addSublayer(shapeLayer)
             
-            let label = UILabel(frame: CGRect(x: centerX + radius + 10, y: centerY - 13, width: 100, height: 2))
-            label.numberOfLines = 2
-            label.text = "X Players"
-            label.sizeToFit()
+            let label = UILabel(frame: CGRect(x: centerX + radius + 10, y: centerY - 13, width: 150, height: 200))
+            label.numberOfLines = 0
             addSubview(label)
             labels.append(label)
         }

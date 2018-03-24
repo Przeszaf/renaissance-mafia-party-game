@@ -13,10 +13,10 @@ class QuestPhaseViewController: UIViewController {
     var questPhaseView: QuestPhaseView!
     var passPhoneView: PassPhoneView!
     
-    var currentPlayer: Player!
+    var roundInfo: RoundInfo!
+    var gameInfo: GameInfo!
     var selectedPlayers: [Player]!
-    var playersClasses: [Player: GameClass]!
-    var playersDecision = [Player: Bool]()
+    var currentPlayer: Player!
     var finishedAsking = false
     
     override func viewDidLoad() {
@@ -47,7 +47,8 @@ class QuestPhaseViewController: UIViewController {
         switch segue.identifier {
         case "showQuestResult"?:
             let controller = segue.destination as! QuestResultViewController
-            controller.playersDecision = playersDecision
+            controller.gameInfo = gameInfo
+            controller.roundInfo = roundInfo
         default:
             preconditionFailure("Wronge segue identifier.")
         }
@@ -55,9 +56,13 @@ class QuestPhaseViewController: UIViewController {
     
     @objc func successOrFailButtonPressed(_ sender: UIButton) {
         if sender == questPhaseView.successButton {
-            playersDecision[currentPlayer] = true
+            roundInfo.playersQuestDecision[currentPlayer] = true
         } else if sender == questPhaseView.failButton {
-            playersDecision[currentPlayer] = false
+            let playerClass = gameInfo.playersClasses[currentPlayer]!
+            if playerClass.isGood {
+                return
+            }
+            roundInfo.playersQuestDecision[currentPlayer] = false
         }
         let index = selectedPlayers.index(of: currentPlayer)!
         if index + 1 < selectedPlayers.count {
@@ -66,7 +71,11 @@ class QuestPhaseViewController: UIViewController {
             currentPlayer = selectedPlayers[0]
             finishedAsking = true
         }
-        passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
+        if finishedAsking {
+            passPhoneView.nameLabel.text = "Pass phone to \(gameInfo.currentLeader.name!)"
+        } else {
+            passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
+        }
         passPhoneView.isHidden = false
         UIView.animate(withDuration: 0.1, animations: {
             self.questPhaseView.alpha = 0

@@ -13,16 +13,15 @@ class MissionAgreementViewController: UIViewController {
     var missionAgreementView: MissionAgreementView!
     var passPhoneView: PassPhoneView!
     
-    var currentPlayer: Player!
-    var players: [Player]!
+    var roundInfo: RoundInfo!
+    var gameInfo: GameInfo!
     var selectedPlayers: [Player]!
-    var playersClasses: [Player: GameClass]!
-    var playersDecision = [Player: Bool]()
+    var currentPlayer: Player!
     var finishedAsking = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentPlayer = players[0]
+        currentPlayer = gameInfo.currentLeader
         missionAgreementView = MissionAgreementView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(missionAgreementView)
         missionAgreementView.isHidden = true
@@ -46,10 +45,9 @@ class MissionAgreementViewController: UIViewController {
         switch segue.identifier {
         case "showMissionResult"?:
             let controller = segue.destination as! MissionResultViewController
-            controller.players = players
             controller.selectedPlayers = selectedPlayers
-            controller.playersDecision = playersDecision
-            controller.playersClasses = playersClasses
+            controller.roundInfo = roundInfo
+            controller.gameInfo = gameInfo
         default:
             preconditionFailure("Wronge segue identifier.")
         }
@@ -57,15 +55,17 @@ class MissionAgreementViewController: UIViewController {
     
     @objc func agreeOrDisagreeButtonPressed(_ sender: UIButton) {
         if sender == missionAgreementView.agreeButton {
-            playersDecision[currentPlayer] = true
+            roundInfo.playersMissionDecision[currentPlayer] = true
         } else if sender == missionAgreementView.disagreeButton {
-            playersDecision[currentPlayer] = false
+            roundInfo.playersMissionDecision[currentPlayer] = false
         }
-        let index = players.index(of: currentPlayer)!
-        if index + 1 < players.count {
-            currentPlayer = players[index + 1]
+        let index = gameInfo.players.index(of: currentPlayer)!
+        if index + 1 < gameInfo.players.count {
+            currentPlayer = gameInfo.players[index + 1]
         } else {
-            currentPlayer = players[0]
+            currentPlayer = gameInfo.players[0]
+        }
+        if currentPlayer == gameInfo.currentLeader {
             finishedAsking = true
         }
         passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"

@@ -31,12 +31,19 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
         tableView.register(AddPlayersCell.self, forCellReuseIdentifier: "AddPlayersCell")
         tableView.rowHeight = 50
         //Adding right and left bar buttons
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonBar))
         
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddingPlayerButtonPressed))
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addPlayer))
         
         toolbar = createToolbarWith(leftButton: cancelButton, rightButton: doneButton)
+        
+        let navigationBar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 44))
+        self.view.addSubview(navigationBar)
+        let navigationItem = UINavigationItem(title: "All Players")
+        navigationBar.setItems([navigationItem], animated: false)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(goBack(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonBar))
+    
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.persistentContainer.viewContext
@@ -118,7 +125,9 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
     
     
     
-    //MARK: - Adding new players
+    //MARK: - Button
+    
+    //Adding new players
     
     @IBAction func addButtonBar() {
         if isEditing {
@@ -162,6 +171,11 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
         cell.playerName.text = ""
         cell.resignFirstResponder()
         tableView.reloadData()
+    }
+    
+    @objc func goBack(_ sender: UIBarButtonItem) {
+        let homeViewController = storyboard?.instantiateInitialViewController() as! HomeViewController
+        show(homeViewController, sender: self)
     }
     
     //MARK: - Deletions
