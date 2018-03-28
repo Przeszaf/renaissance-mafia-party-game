@@ -61,6 +61,8 @@
 		0CDE5A5D206AABF900963695 /* MagicMirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */; };
 		0CDE5A5F206BAB2800963695 /* MagicMirrorResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */; };
 		0CDE5A61206BABAC00963695 /* MagicMirrorResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */; };
+		0CDE5A69206BF72100963695 /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A68206BF72100963695 /* ClassDetailView.swift */; };
+		0CEB6304206BFBB300FD7E01 /* NextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6303206BFBB200FD7E01 /* NextButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +143,8 @@
 		0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorViewController.swift; sourceTree = "<group>"; };
 		0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorResultViewController.swift; sourceTree = "<group>"; };
 		0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorResultView.swift; sourceTree = "<group>"; };
+		0CDE5A68206BF72100963695 /* ClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
+		0CEB6303206BFBB200FD7E01 /* NextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				0C8809182066CB1400BD64C3 /* TableHeaderView.swift */,
+				0CEB6303206BFBB200FD7E01 /* NextButtonView.swift */,
 				0C4D6CEB205ADD630029ED43 /* TableViewCells */,
 				0CDE5A65206BF28800963695 /* Home */,
 				0CDE5A67206BF29100963695 /* Main Game */,
@@ -346,6 +351,7 @@
 				0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */,
 				0C4D6CFB205AE7820029ED43 /* MainGameView.swift */,
 				0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */,
+				0CDE5A68206BF72100963695 /* ClassDetailView.swift */,
 				0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */,
 				0CBD8C66205D470C0032632F /* QuestPhaseView.swift */,
 				0C38DF05205D496E00EBBFFD /* QuestResultView.swift */,
@@ -491,7 +497,9 @@
 				0CDE5A61206BABAC00963695 /* MagicMirrorResultView.swift in Sources */,
 				0C8809192066CB1400BD64C3 /* TableHeaderView.swift in Sources */,
 				0C4D6CEF205ADDA80029ED43 /* AddPlayersCell.swift in Sources */,
+				0CEB6304206BFBB300FD7E01 /* NextButtonView.swift in Sources */,
 				0C4D6CF6205ADE450029ED43 /* Constants.swift in Sources */,
+				0CDE5A69206BF72100963695 /* ClassDetailView.swift in Sources */,
 				0CDE5A5A206AA56100963695 /* Expansion+CoreDataClass.swift in Sources */,
 				0C4D6CFE205AE8BD0029ED43 /* ShowClassInfoViewController.swift in Sources */,
 				0CDE5A5D206AABF900963695 /* MagicMirrorViewController.swift in Sources */,

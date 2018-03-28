@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MissionResultViewController: UIViewController {
+class MissionResultViewController: UIViewController, TableButtonDelegate {
     
     var roundInfo: RoundInfo!
     var gameInfo: GameInfo!
@@ -19,7 +19,7 @@ class MissionResultViewController: UIViewController {
         super.viewDidLoad()
         
         let buttonViewController = childViewControllers.last! as! TableButtonViewController
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
+        buttonViewController.delegate = self
         
         let tableViewController = childViewControllers.first! as! MissionResultTableViewController
         tableViewController.players = gameInfo.players
@@ -43,7 +43,7 @@ class MissionResultViewController: UIViewController {
         
     }
     
-    @objc func nextButtonPressed(_ sender: UIButton) {
+    func touchUp() {
         if selectedTeamGoes == true {
             performSegue(withIdentifier: "missionAgreed", sender: self)
         } else {

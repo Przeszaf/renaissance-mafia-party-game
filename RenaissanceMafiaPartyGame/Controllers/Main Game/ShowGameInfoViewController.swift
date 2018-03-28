@@ -12,7 +12,7 @@ import UIKit
 import CoreData
 
 
-class ShowGameInfoViewController: UIViewController {
+class ShowGameInfoViewController: UIViewController, TableButtonDelegate {
     
     var gameInfo: GameInfo!
     var goodClasses = [GameClass]()
@@ -45,17 +45,12 @@ class ShowGameInfoViewController: UIViewController {
         tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
+        buttonViewController.delegate = self
         
     }
+
     
-    @objc func nextButtonHoldDown(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.red
-    }
-    
-    @objc func nextButtonPressed(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.blue
+    @objc func touchUp() {
         if gameInfo.classes.count < gameInfo.players.count {
         } else {
             performSegue(withIdentifier: "showClassInfo", sender: self)
@@ -106,7 +101,8 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
             cell.nameLabel.text = expansions[indexPath.row].name!
             cell.descriptionLabel.text = expansions[indexPath.row].about!
         }
-        cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
+        cell.infoButton.tag = indexPath.section * 10 + indexPath.row
+        cell.photo.image = UIImage(named: cell.nameLabel.text!)
         cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
@@ -149,9 +145,21 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
     }
     
     
-    @objc func showClassDetails(_ sender: UIButtonType) {
+    @objc func showClassDetails(_ sender: UIButton) {
         let classDetails = ClassDetailViewController()
-        classDetails.modalPresentationStyle = .overCurrentContext
+        
+        if sender.tag / 10 == 0 {
+            classDetails.gameClass = goodClasses[sender.tag % 10]
+            classDetails.key = "Class"
+        } else if sender.tag / 10 == 1 {
+            classDetails.gameClass = evilClasses[sender.tag % 10]
+            classDetails.key = "Class"
+        } else if sender.tag / 10 == 2 {
+            classDetails.expansion = expansions[sender.tag % 10]
+            classDetails.key = "Expansion"
+        }
+        
+        classDetails.modalPresentationStyle = .overFullScreen
         classDetails.modalTransitionStyle = .crossDissolve
         self.present(classDetails, animated: true, completion: nil)
     }

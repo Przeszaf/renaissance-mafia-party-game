@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 
-class SelectAdditionalClassesViewController: UIViewController {
+class SelectAdditionalClassesViewController: UIViewController, TableButtonDelegate {
+    
     
     var gameInfo: GameInfo!
     var goodClassesAvailable = [GameClass]()
@@ -53,17 +54,17 @@ class SelectAdditionalClassesViewController: UIViewController {
         tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
+        buttonViewController.delegate = self
         
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        footerView.backgroundColor = UIColor.white
+        tableView.tableView.tableFooterView = footerView
     }
+
     
-    @objc func nextButtonHoldDown(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.red
-    }
     
-    @objc func nextButtonPressed(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.blue
+    func touchUp() {
+        print("Tapped")
         do {
             let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
             var knight: GameClass!
@@ -153,8 +154,9 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
             cell.nameLabel.text = expansionsAvailable[indexPath.row].name!
             cell.descriptionLabel.text = expansionsAvailable[indexPath.row].about!
         }
-        cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
+        cell.photo.image = UIImage(named: cell.nameLabel.text!)
         cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
+        cell.infoButton.tag = indexPath.section * 10 + indexPath.row
         cell.backgroundColor = UIColor.clear
         cell.selectionStyle = .none
         return cell
@@ -226,9 +228,21 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     }
     
     
-    @objc func showClassDetails(_ sender: UIButtonType) {
+    @objc func showClassDetails(_ sender: UIButton) {
         let classDetails = ClassDetailViewController()
-        classDetails.modalPresentationStyle = .overCurrentContext
+    
+        if sender.tag / 10 == 0 {
+            classDetails.gameClass = goodClassesAvailable[sender.tag % 10]
+            classDetails.key = "Class"
+        } else if sender.tag / 10 == 1 {
+            classDetails.gameClass = evilClassesAvailable[sender.tag % 10]
+            classDetails.key = "Class"
+        } else if sender.tag / 10 == 2 {
+            classDetails.expansion = expansionsAvailable[sender.tag % 10]
+            classDetails.key = "Expansion"
+        }
+        
+        classDetails.modalPresentationStyle = .overFullScreen
         classDetails.modalTransitionStyle = .crossDissolve
         self.present(classDetails, animated: true, completion: nil)
     }

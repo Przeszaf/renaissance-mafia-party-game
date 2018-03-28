@@ -10,7 +10,8 @@ import UIKit
 import CoreData
 
 
-class SelectPlayersViewController: UIViewController {
+class SelectPlayersViewController: UIViewController, TableButtonDelegate {
+    
     
     let gameInfo = GameInfo()
     
@@ -21,17 +22,11 @@ class SelectPlayersViewController: UIViewController {
         tableView.selectPlayersViewController = self
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonHoldDown(_:)), for: .touchDown)
-        buttonViewController.button.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
+        buttonViewController.delegate = self
         
     }
     
-    @objc func nextButtonHoldDown(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.red
-    }
-    
-    @objc func nextButtonPressed(_ sender: UIButton) {
-        sender.backgroundColor = UIColor.blue
+    func touchUp() {
         if gameInfo.players.count >= 5 {
             performSegue(withIdentifier: "selectAdditionalClasses", sender: self)
         }
