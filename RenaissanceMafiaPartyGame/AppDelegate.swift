@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let managedContext = persistentContainer.viewContext
         
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print("Core data")
+        print(urls[urls.count-1] as URL)
+        
         do {
             let players: [Player] = try managedContext.fetch(Player.fetchRequest())
             if players.count == 0 {
@@ -47,31 +51,70 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
+            
             if classes.count == 0 {
-                for i in 0..<4 {
+                for i in 0..<7 {
                     let newClass = GameClass(context: managedContext)
                     switch i {
                     case 0:
                         newClass.name = "Knight"
                         newClass.isGood = true
                         newClass.about = "One of lawful characters that know nothing."
+                        newClass.isAdditional = false
                     case 1:
                         newClass.name = "Wizard"
                         newClass.isGood = true
                         newClass.about = "One of lawful characters that know everything about other players."
+                        newClass.isAdditional = false
                     case 2:
                         newClass.name = "Bandit"
                         newClass.isGood = false
                         newClass.about = "Evil character that know about other evil characters"
+                        newClass.isAdditional = false
                     case 3:
                         newClass.name = "Assassin"
                         newClass.isGood = false
                         newClass.about = "Evil character that know about other evil characters. Moreover, at the end of game you can kill Merlin."
+                        newClass.isAdditional = false
+                    case 4:
+                        newClass.name = "Warlock"
+                        newClass.isGood = false
+                        newClass.about = "Warlocks is evil character that has magical power, therefore is seen by psychic."
+                        newClass.isAdditional = true
+                    case 5:
+                        newClass.name = "Psychic"
+                        newClass.isGood = true
+                        newClass.about = "Psychic is good character that can sense people with power. Therefore know who is Wizard and Warlock"
+                        newClass.isAdditional = true
+                    case 6:
+                        newClass.name = "Ninja"
+                        newClass.isGood = false
+                        newClass.about = "Evil character that hides from everyone, even other evil characters"
+                        newClass.isAdditional = true
                     default:
                         newClass.name = "Other"
                     }
                 }
             }
+            
+            let expansions: [Expansion] = try managedContext.fetch(Expansion.fetchRequest())
+            
+            if expansions.count == 0 {
+                for i in 0..<2 {
+                    let newExpansion = Expansion(context: managedContext)
+                    switch i {
+                    case 0:
+                        newExpansion.name = "Magic Mirror"
+                        newExpansion.about = "At the end of 3rd, 4th and 5th turn one player will check fraction of another player. Then Magic Mirror is transferred to that player."
+                    case 1:
+                        newExpansion.name = "Sword of Distrust"
+                        newExpansion.about = "During quest one player can use the sword to change decision of one player (without seeing it)."
+                    default:
+                        newExpansion.name = "Other"
+                    }
+                }
+            }
+            
             try managedContext.save()
         } catch {
             print("Error creating players. \(error)")

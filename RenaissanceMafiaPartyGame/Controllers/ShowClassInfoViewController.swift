@@ -43,9 +43,11 @@ class ShowClassInfoViewController: UIViewController {
         showPlayersClassView.visibilityLabel.numberOfLines = 0
         
         passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
+        
     }
     
     @objc func tappedOnShowPlayersClassView(recognizer: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "startGame", sender: self)
         if recognizer.view == showPlayersClassView {
             guard let index = gameInfo.players.index(of: currentPlayer) else { return }
             if index + 1 < gameInfo.players.count {
@@ -87,7 +89,11 @@ class ShowClassInfoViewController: UIViewController {
             }
         }
         if !string.isEmpty {
-            self.showPlayersClassView.visibilityLabel.text = "You are in same team with \(string.joined(separator: ", "))."
+            if gameInfo.playersClasses[currentPlayer]?.name! == "Psychic" {
+                self.showPlayersClassView.visibilityLabel.text = "You feel that \(string.joined(separator: ", ")) have magic powers."
+            } else {
+                self.showPlayersClassView.visibilityLabel.text = "You are in same team with \(string.joined(separator: ", "))."
+            }
         } else {
             self.showPlayersClassView.visibilityLabel.text = ""
         }

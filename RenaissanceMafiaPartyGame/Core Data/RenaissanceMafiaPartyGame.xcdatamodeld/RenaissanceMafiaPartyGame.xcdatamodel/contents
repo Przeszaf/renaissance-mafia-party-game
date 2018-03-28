@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D102" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Expansion" representedClassName="Expansion" syncable="YES">
+        <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="matches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Match" inverseName="expansions" inverseEntity="Match" syncable="YES"/>
+    </entity>
     <entity name="GameClass" representedClassName="GameClass" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAdditional" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isGood" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerResult" inverseName="gameClass" inverseEntity="PlayerResult" syncable="YES"/>
     </entity>
     <entity name="Match" representedClassName="Match" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="expansions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Expansion" inverseName="matches" inverseEntity="Expansion" syncable="YES"/>
         <relationship name="players" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Player" inverseName="matches" inverseEntity="Player" syncable="YES"/>
         <relationship name="results" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PlayerResult" inverseName="match" inverseEntity="PlayerResult" syncable="YES"/>
     </entity>
@@ -24,9 +31,10 @@
         <relationship name="player" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Player" inverseName="results" inverseEntity="Player" syncable="YES"/>
     </entity>
     <elements>
+        <element name="GameClass" positionX="-108" positionY="180" width="128" height="120"/>
+        <element name="Match" positionX="-254" positionY="171" width="128" height="105"/>
         <element name="Player" positionX="-29" positionY="48" width="128" height="103"/>
-        <element name="Match" positionX="-254" positionY="171" width="128" height="88"/>
         <element name="PlayerResult" positionX="-0" positionY="216" width="128" height="103"/>
-        <element name="GameClass" positionX="-108" positionY="180" width="128" height="105"/>
+        <element name="Expansion" positionX="-126" positionY="162" width="128" height="90"/>
     </elements>
 </model>

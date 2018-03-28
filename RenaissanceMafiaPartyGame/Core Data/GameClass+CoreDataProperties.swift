@@ -2,7 +2,7 @@
 //  GameClass+CoreDataProperties.swift
 //  RenaissanceMafiaPartyGame
 //
-//  Created by Przemyslaw Szafulski on 22/03/2018.
+//  Created by Przemyslaw Szafulski on 27/03/2018.
 //  Copyright © 2018 Przemyslaw Szafulski. All rights reserved.
 //
 //
@@ -17,9 +17,10 @@ extension GameClass {
         return NSFetchRequest<GameClass>(entityName: "GameClass")
     }
 
-    @NSManaged public var name: String?
-    @NSManaged public var isGood: Bool
     @NSManaged public var about: String?
+    @NSManaged public var isGood: Bool
+    @NSManaged public var name: String?
+    @NSManaged public var isAdditional: Bool
     @NSManaged public var results: NSSet?
 
 }

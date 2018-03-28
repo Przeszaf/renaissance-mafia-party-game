@@ -12,6 +12,7 @@ class MainGameView: UIView {
     
     var leaderLabel = UILabel()
     var missionFailedLabel = UILabel()
+    var magicMirrorLabel = UILabel()
     var nextButton = UIButton(type: UIButtonType.roundedRect)
     var gameBoardView: GameBoardView!
     
@@ -24,6 +25,7 @@ class MainGameView: UIView {
         gameBoardView = GameBoardView(frame: self.frame, fillColors: fillColors)
         addSubview(leaderLabel)
         addSubview(missionFailedLabel)
+        addSubview(magicMirrorLabel)
         addSubview(nextButton)
         addSubview(nextButton)
         addSubview(gameBoardView)
@@ -44,6 +46,7 @@ class MainGameView: UIView {
         missionFailedLabel.translatesAutoresizingMaskIntoConstraints = false
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         gameBoardView.translatesAutoresizingMaskIntoConstraints = false
+        magicMirrorLabel.translatesAutoresizingMaskIntoConstraints = false
         
         leaderLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor).isActive = true
         leaderLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -51,8 +54,10 @@ class MainGameView: UIView {
         missionFailedLabel.topAnchor.constraint(equalTo: leaderLabel.bottomAnchor).isActive = true
         missionFailedLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
+        magicMirrorLabel.topAnchor.constraint(equalTo: missionFailedLabel.bottomAnchor).isActive = true
+        magicMirrorLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
-        gameBoardView.topAnchor.constraint(equalTo: missionFailedLabel.bottomAnchor).isActive = true
+        gameBoardView.topAnchor.constraint(equalTo: magicMirrorLabel.bottomAnchor).isActive = true
         gameBoardView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         gameBoardView.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
         gameBoardView.heightAnchor.constraint(equalToConstant: 500).isActive = true

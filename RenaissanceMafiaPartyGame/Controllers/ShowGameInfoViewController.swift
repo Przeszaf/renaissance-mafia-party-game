@@ -38,9 +38,10 @@ class ShowGameInfoViewController: UIViewController {
         let tableView = self.childViewControllers.first as! ShowGameInfoTableViewController
         tableView.evilClasses = evilClasses
         tableView.goodClasses = goodClasses
+        tableView.expansions = gameInfo.expansions
         
         let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
-        headerView.textLabel.text = "You are playing with classes listed below."
+        headerView.textLabel.text = "You are playing with classes and expansions listed below."
         tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
@@ -74,6 +75,7 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
     
     var evilClasses: [GameClass]!
     var goodClasses: [GameClass]!
+    var expansions: [Expansion]!
     
     //MARK: - Overriding functions
     override func viewWillAppear(_ animated: Bool) {
@@ -100,6 +102,9 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
         } else if indexPath.section == 1 {
             cell.nameLabel.text = evilClasses[indexPath.row].name!
             cell.descriptionLabel.text = evilClasses[indexPath.row].about!
+        } else if indexPath.section == 2 {
+            cell.nameLabel.text = expansions[indexPath.row].name!
+            cell.descriptionLabel.text = expansions[indexPath.row].about!
         }
         cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
         cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
@@ -113,6 +118,8 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
             return goodClasses.count
         } else if section == 1 {
             return evilClasses.count
+        } else if section == 2 {
+            return expansions.count
         }
         return 0
     }
@@ -122,7 +129,7 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -130,6 +137,8 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
             return "Good classes"
         } else if section == 1 {
             return "Evil classes"
+        } else if section == 2 {
+            return "Expansions"
         }
         return nil
     }

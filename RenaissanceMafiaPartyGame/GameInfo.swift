@@ -14,7 +14,9 @@ class GameInfo {
     var classes = [GameClass]()
     var playersClasses = [Player: GameClass]()
     var visibility = [Player: [Player]]()
+    var expansions = [Expansion]()
     var rounds = [RoundInfo]()
+    var magicMirrorOwner: Player!
     var playersInTeam = [Int]()
     var failuresToLose = [Int]()
     var evilClassesCount = 0
@@ -34,7 +36,7 @@ class GameInfo {
             var visiblePlayers = [Player]()
             guard let playerClass = playersClasses[player] else { return }
             switch playerClass.name! {
-            case "Knight":
+            case "Knight", "Ninja":
                 visiblePlayers = [Player]()
             case "Wizard":
                 for (anotherPlayer, anotherPlayerClass) in playersClasses {
@@ -44,12 +46,18 @@ class GameInfo {
                         }
                     }
                 }
-            case "Assassin", "Bandit":
+            case "Assassin", "Bandit", "Warlock":
                 for (anotherPlayer, anotherPlayerClass) in playersClasses {
                     if anotherPlayer != player {
-                        if anotherPlayerClass.name == "Bandit" || anotherPlayerClass.name == "Assassin" {
+                        if anotherPlayerClass.name == "Bandit" || anotherPlayerClass.name == "Assassin" || anotherPlayerClass.name == "Warlock" {
                             visiblePlayers.append(anotherPlayer)
                         }
+                    }
+                }
+            case "Psychic":
+                for (anotherPlayer, anotherPlayerClass) in playersClasses {
+                    if anotherPlayerClass.name == "Wizard" || anotherPlayerClass.name == "Warlock" {
+                        visiblePlayers.append(anotherPlayer)
                     }
                 }
             default:
@@ -58,6 +66,7 @@ class GameInfo {
             visibility[player] = visiblePlayers
         }
     }
+    
     
     func assignFirstLeader() {
         currentLeader = players[Int(arc4random_uniform(UInt32(players.count)))]

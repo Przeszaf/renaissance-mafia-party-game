@@ -13,6 +13,7 @@ class MainGameViewController: UIViewController {
     var mainGameView: MainGameView!
     var roundInfo: RoundInfo!
     var gameInfo: GameInfo!
+    var useMagicMirror = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class MainGameViewController: UIViewController {
                 roundsLost += 1
             }
         }
+        
         mainGameView = MainGameView(frame: view.frame, fillColors: fillColors)
         view.addSubview(mainGameView)
         mainGameView.nextButton.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
@@ -47,11 +49,22 @@ class MainGameViewController: UIViewController {
             label.text = "\(gameInfo.playersInTeam[i]) Players\n\(gameInfo.failuresToLose[i]) Failures"
             label.sizeToFit()
         }
+        
+        if gameInfo.expansions.contains(where: {$0.name! == "Magic Mirror"}) {
+            if gameInfo.rounds.count == 1 {
+                gameInfo.magicMirrorOwner = gameInfo.players[Int(arc4random_uniform(UInt32(gameInfo.players.count)))]
+                mainGameView.magicMirrorLabel.text = "Owner of Magic Mirror: \(gameInfo.magicMirrorOwner.name!)"
+            }
+        }
     }
     
     
     @objc func nextButtonPressed(_ sender: UIButton) {
-        performSegue(withIdentifier: "selectTeam", sender: nil)
+        if useMagicMirror {
+            performSegue(withIdentifier: "useMagicMirror", sender: nil)
+        } else {
+            performSegue(withIdentifier: "selectTeam", sender: nil)
+        }
     }
     
     
@@ -62,6 +75,10 @@ class MainGameViewController: UIViewController {
             controller.gameInfo = gameInfo
             controller.roundInfo = roundInfo
             controller.numberOfPlayers = gameInfo.playersInTeam[gameInfo.rounds.count - 1]
+        case "useMagicMirror"?:
+            let controller = segue.destination as! MagicMirrorViewController
+            controller.gameInfo = gameInfo
+            controller.roundInfo = roundInfo
         default:
             preconditionFailure("Wrong segue identifier")
         }

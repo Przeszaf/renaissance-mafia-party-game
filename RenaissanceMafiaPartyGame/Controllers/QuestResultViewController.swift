@@ -48,6 +48,9 @@ class QuestResultViewController: UIViewController {
         let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainGameViewController") as! MainGameViewController
         mainVC.roundInfo = roundInfo
         mainVC.gameInfo = gameInfo
+        if gameInfo.expansions.contains(where: {$0.name == "Magic Mirror"}) && gameInfo.rounds.count >= 2 {
+            mainVC.useMagicMirror = true
+        }
         show(mainVC, sender: self)
     }
 }

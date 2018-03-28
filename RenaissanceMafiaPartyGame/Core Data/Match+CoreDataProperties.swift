@@ -2,7 +2,7 @@
 //  Match+CoreDataProperties.swift
 //  RenaissanceMafiaPartyGame
 //
-//  Created by Przemyslaw Szafulski on 22/03/2018.
+//  Created by Przemyslaw Szafulski on 27/03/2018.
 //  Copyright © 2018 Przemyslaw Szafulski. All rights reserved.
 //
 //
@@ -20,6 +20,7 @@ extension Match {
     @NSManaged public var date: NSDate?
     @NSManaged public var players: NSSet?
     @NSManaged public var results: NSSet?
+    @NSManaged public var expansions: NSSet?
 
 }
 
@@ -54,5 +55,22 @@ extension Match {
 
     @objc(removeResults:)
     @NSManaged public func removeFromResults(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for expansions
+extension Match {
+
+    @objc(addExpansionsObject:)
+    @NSManaged public func addToExpansions(_ value: Expansion)
+
+    @objc(removeExpansionsObject:)
+    @NSManaged public func removeFromExpansions(_ value: Expansion)
+
+    @objc(addExpansions:)
+    @NSManaged public func addToExpansions(_ values: NSSet)
+
+    @objc(removeExpansions:)
+    @NSManaged public func removeFromExpansions(_ values: NSSet)
 
 }

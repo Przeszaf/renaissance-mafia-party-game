@@ -13,10 +13,11 @@ import CoreData
 class SelectAdditionalClassesViewController: UIViewController {
     
     var gameInfo: GameInfo!
-    var goodClasses = [GameClass]()
-    var evilClasses = [GameClass]()
-    var goodClassesCount = 0
-    var evilClassesCount = 0
+    var goodClassesAvailable = [GameClass]()
+    var evilClassesAvailable = [GameClass]()
+    var expansionsAvailable = [Expansion]()
+    var goodClassesSelected = 0
+    var evilClassesSelected = 0
     
     var managedContext: NSManagedObjectContext!
     
@@ -27,15 +28,28 @@ class SelectAdditionalClassesViewController: UIViewController {
         
         managedContext = appDelegate.persistentContainer.viewContext
         
-        
+        do {
+            let evilRequest = NSFetchRequest<GameClass>(entityName: "GameClass")
+            evilRequest.predicate = NSPredicate(format: "isAdditional == YES AND isGood == NO")
+            evilClassesAvailable = try managedContext.fetch(evilRequest)
+            
+            let goodRequest = NSFetchRequest<GameClass>(entityName: "GameClass")
+            goodRequest.predicate = NSPredicate(format: "isAdditional == YES AND isGood == YES")
+            goodClassesAvailable = try managedContext.fetch(goodRequest)
+            
+            expansionsAvailable = try managedContext.fetch(Expansion.fetchRequest())
+        } catch {
+            print(error)
+        }
         
         let tableView = self.childViewControllers.first as! SelectAdditionalClassesTableViewController
         tableView.selectClassesViewController = self
-        tableView.evilClasses = evilClasses
-        tableView.goodClasses = goodClasses
+        tableView.evilClassesAvailable = evilClassesAvailable
+        tableView.goodClassesAvailable = goodClassesAvailable
+        tableView.expansionsAvailable = expansionsAvailable
         
-        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
-        headerView.textLabel.text = "Select up to \(gameInfo.goodClassesCount - 1) good and \(gameInfo.evilClassesCount - 1) evil classes."
+        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
+        headerView.textLabel.text = "Select up to \(gameInfo.goodClassesCount - 1) good and \(gameInfo.evilClassesCount - 1) evil classes and as many expansions as you wish."
         tableView.tableView.tableHeaderView = headerView
         
         let buttonViewController = childViewControllers.last as! TableButtonViewController
@@ -67,14 +81,14 @@ class SelectAdditionalClassesViewController: UIViewController {
                     assassin = gameClass
                 }
             }
-            for i in 0..<gameInfo.goodClassesCount {
+            for i in 0..<gameInfo.goodClassesCount - goodClassesSelected {
                 if i == 0 {
                     gameInfo.classes.append(wizard)
                 } else {
                     gameInfo.classes.append(knight)
                 }
             }
-            for i in 0..<gameInfo.evilClassesCount {
+            for i in 0..<gameInfo.evilClassesCount - evilClassesSelected {
                 if i == 0 {
                     gameInfo.classes.append(assassin)
                 } else {
@@ -102,8 +116,9 @@ class SelectAdditionalClassesViewController: UIViewController {
 
 class SelectAdditionalClassesTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
-    var evilClasses: [GameClass]!
-    var goodClasses: [GameClass]!
+    var evilClassesAvailable: [GameClass]!
+    var goodClassesAvailable: [GameClass]!
+    var expansionsAvailable: [Expansion]!
     var selectClassesViewController: SelectAdditionalClassesViewController!
     
     //MARK: - Overriding functions
@@ -129,11 +144,14 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameClassCell", for: indexPath) as! GameClassCell
         
         if indexPath.section == 0 {
-            cell.nameLabel.text = goodClasses[indexPath.row].name!
-            cell.descriptionLabel.text = goodClasses[indexPath.row].about!
+            cell.nameLabel.text = goodClassesAvailable[indexPath.row].name!
+            cell.descriptionLabel.text = goodClassesAvailable[indexPath.row].about!
         } else if indexPath.section == 1 {
-            cell.nameLabel.text = evilClasses[indexPath.row].name!
-            cell.descriptionLabel.text = evilClasses[indexPath.row].about!
+            cell.nameLabel.text = evilClassesAvailable[indexPath.row].name!
+            cell.descriptionLabel.text = evilClassesAvailable[indexPath.row].about!
+        } else if indexPath.section == 2 {
+            cell.nameLabel.text = expansionsAvailable[indexPath.row].name!
+            cell.descriptionLabel.text = expansionsAvailable[indexPath.row].about!
         }
         cell.photo.backgroundColor = UIColor(red: 0.5, green: 0, blue: 1, alpha: 0.3)
         cell.infoButton.addTarget(self, action: #selector(showClassDetails(_:)), for: .touchUpInside)
@@ -144,25 +162,18 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return goodClasses.count
+            return goodClassesAvailable.count
         } else if section == 1 {
-            return evilClasses.count
+            return evilClassesAvailable.count
+        }  else if section == 2 {
+            return expansionsAvailable.count
         }
         return 0
     }
     
-    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if selectClassesViewController.goodClassesCount == selectClassesViewController.gameInfo.goodClassesCount {
-            return nil
-        }
-        if selectClassesViewController.evilClassesCount == selectClassesViewController.gameInfo.evilClassesCount {
-            return nil
-        }
-        return indexPath
-    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -170,6 +181,8 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
             return "Good classes"
         } else if section == 1 {
             return "Evil classes"
+        } else if section == 2 {
+            return "Expansions"
         }
         return nil
     }
@@ -178,23 +191,31 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         if indexPath.section == 0 {
-            if let index = selectClassesViewController.gameInfo.classes.index(of: goodClasses[indexPath.row]) {
+            if let index = selectClassesViewController.gameInfo.classes.index(of: goodClassesAvailable[indexPath.row]) {
                 selectClassesViewController.gameInfo.classes.remove(at: index)
-                selectClassesViewController.goodClassesCount -= 1
+                selectClassesViewController.goodClassesSelected -= 1
                 cell.accessoryType = .none
-            } else {
-                selectClassesViewController.gameInfo.classes.append(goodClasses[indexPath.row])
-                selectClassesViewController.goodClassesCount += 1
+            } else if selectClassesViewController.goodClassesSelected != selectClassesViewController.gameInfo.goodClassesCount - 1 {
+                selectClassesViewController.gameInfo.classes.append(goodClassesAvailable[indexPath.row])
+                selectClassesViewController.goodClassesSelected += 1
                 cell.accessoryType = .checkmark
             }
         } else if indexPath.section == 1 {
-            if let index = selectClassesViewController.gameInfo.classes.index(of: evilClasses[indexPath.row]) {
+            if let index = selectClassesViewController.gameInfo.classes.index(of: evilClassesAvailable[indexPath.row]) {
                 selectClassesViewController.gameInfo.classes.remove(at: index)
-                selectClassesViewController.evilClassesCount -= 1
+                selectClassesViewController.evilClassesSelected -= 1
+                cell.accessoryType = .none
+            } else if selectClassesViewController.evilClassesSelected != selectClassesViewController.gameInfo.evilClassesCount - 1{
+                selectClassesViewController.gameInfo.classes.append(evilClassesAvailable[indexPath.row])
+                selectClassesViewController.evilClassesSelected += 1
+                cell.accessoryType = .checkmark
+            }
+        } else if indexPath.section == 2 {
+            if let index = selectClassesViewController.gameInfo.expansions.index(of: expansionsAvailable[indexPath.row]) {
+                selectClassesViewController.gameInfo.expansions.remove(at: index)
                 cell.accessoryType = .none
             } else {
-                selectClassesViewController.gameInfo.classes.append(evilClasses[indexPath.row])
-                selectClassesViewController.evilClassesCount += 1
+                selectClassesViewController.gameInfo.expansions.append(expansionsAvailable[indexPath.row])
                 cell.accessoryType = .checkmark
             }
         }

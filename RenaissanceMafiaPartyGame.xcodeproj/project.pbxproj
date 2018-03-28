@@ -57,6 +57,11 @@
 		0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C62205D3D730032632F /* MissionResultCell.swift */; };
 		0CBD8C65205D3FD30032632F /* QuestPhaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */; };
 		0CBD8C67205D470C0032632F /* QuestPhaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C66205D470C0032632F /* QuestPhaseView.swift */; };
+		0CDE5A5A206AA56100963695 /* Expansion+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A58206AA56100963695 /* Expansion+CoreDataClass.swift */; };
+		0CDE5A5B206AA56100963695 /* Expansion+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A59206AA56100963695 /* Expansion+CoreDataProperties.swift */; };
+		0CDE5A5D206AABF900963695 /* MagicMirrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */; };
+		0CDE5A5F206BAB2800963695 /* MagicMirrorResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */; };
+		0CDE5A61206BABAC00963695 /* MagicMirrorResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +138,11 @@
 		0CBD8C62205D3D730032632F /* MissionResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResultCell.swift; sourceTree = "<group>"; };
 		0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPhaseViewController.swift; sourceTree = "<group>"; };
 		0CBD8C66205D470C0032632F /* QuestPhaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestPhaseView.swift; sourceTree = "<group>"; };
+		0CDE5A58206AA56100963695 /* Expansion+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expansion+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0CDE5A59206AA56100963695 /* Expansion+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Expansion+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorViewController.swift; sourceTree = "<group>"; };
+		0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorResultViewController.swift; sourceTree = "<group>"; };
+		0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorResultView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +173,8 @@
 		0C0FC2142064079000B9B71D /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				0CDE5A58206AA56100963695 /* Expansion+CoreDataClass.swift */,
+				0CDE5A59206AA56100963695 /* Expansion+CoreDataProperties.swift */,
 				0C0FC22D20641A8700B9B71D /* GameClass+CoreDataClass.swift */,
 				0C0FC22E20641A8700B9B71D /* GameClass+CoreDataProperties.swift */,
 				0C0FC217206407F400B9B71D /* PlayerResult+CoreDataClass.swift */,
@@ -247,6 +259,7 @@
 				0C38DF05205D496E00EBBFFD /* QuestResultView.swift */,
 				0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */,
 				0C8809182066CB1400BD64C3 /* TableHeaderView.swift */,
+				0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +278,8 @@
 				0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */,
 				0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */,
 				0CBD8C60205D3D110032632F /* MissionResultViewController.swift */,
+				0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */,
+				0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */,
 				0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */,
 				0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */,
 				0C0FC229206412F000B9B71D /* TableButtonViewController.swift */,
@@ -428,10 +443,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CDE5A61206BABAC00963695 /* MagicMirrorResultView.swift in Sources */,
 				0C8809192066CB1400BD64C3 /* TableHeaderView.swift in Sources */,
 				0C4D6CEF205ADDA80029ED43 /* AddPlayersCell.swift in Sources */,
 				0C4D6CF6205ADE450029ED43 /* Constants.swift in Sources */,
+				0CDE5A5A206AA56100963695 /* Expansion+CoreDataClass.swift in Sources */,
 				0C4D6CFE205AE8BD0029ED43 /* ShowClassInfoViewController.swift in Sources */,
+				0CDE5A5D206AABF900963695 /* MagicMirrorViewController.swift in Sources */,
 				0C4D6CFC205AE7820029ED43 /* MainGameView.swift in Sources */,
 				0C0FC221206407F400B9B71D /* Match+CoreDataClass.swift in Sources */,
 				0C4D6D04205C1EC00029ED43 /* GameBoardView.swift in Sources */,
@@ -445,6 +463,7 @@
 				0C0FC213206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld in Sources */,
 				0C4D6CF4205ADE080029ED43 /* StringExtension.swift in Sources */,
 				0C4D6D0E205C36A90029ED43 /* SelectTeamViewController.swift in Sources */,
+				0CDE5A5F206BAB2800963695 /* MagicMirrorResultViewController.swift in Sources */,
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
 				0C8809172066BC5700BD64C3 /* GameInfoView.swift in Sources */,
@@ -465,6 +484,7 @@
 				0C0FC21E206407F400B9B71D /* PlayerResult+CoreDataProperties.swift in Sources */,
 				0C0FC22420640AFA00B9B71D /* NSDateExtension.swift in Sources */,
 				0C4D6CE2205AD5FF0029ED43 /* HomeView.swift in Sources */,
+				0CDE5A5B206AA56100963695 /* Expansion+CoreDataProperties.swift in Sources */,
 				0C0FC22820640E9700B9B71D /* SelectAdditionalClassesViewController.swift in Sources */,
 				0C0FC23420653DC600B9B71D /* RoundInfo.swift in Sources */,
 				0C880913206582F300BD64C3 /* GameInfo.swift in Sources */,

@@ -2,7 +2,7 @@
 //  Player+CoreDataProperties.swift
 //  RenaissanceMafiaPartyGame
 //
-//  Created by Przemyslaw Szafulski on 22/03/2018.
+//  Created by Przemyslaw Szafulski on 27/03/2018.
 //  Copyright © 2018 Przemyslaw Szafulski. All rights reserved.
 //
 //
@@ -17,8 +17,8 @@ extension Player {
         return NSFetchRequest<Player>(entityName: "Player")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var lastTimePlayed: NSDate?
+    @NSManaged public var name: String?
     @NSManaged public var matches: NSSet?
     @NSManaged public var results: NSSet?
 
