@@ -51,7 +51,6 @@
 		0C4D6D0E205C36A90029ED43 /* SelectTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */; };
 		0C880913206582F300BD64C3 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C880912206582F300BD64C3 /* GameInfo.swift */; };
 		0C8809152066BB0E00BD64C3 /* ShowGameInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8809142066BB0E00BD64C3 /* ShowGameInfoViewController.swift */; };
-		0C8809172066BC5700BD64C3 /* GameInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8809162066BC5700BD64C3 /* GameInfoView.swift */; };
 		0C8809192066CB1400BD64C3 /* TableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C8809182066CB1400BD64C3 /* TableHeaderView.swift */; };
 		0CBD8C61205D3D110032632F /* MissionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C60205D3D110032632F /* MissionResultViewController.swift */; };
 		0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBD8C62205D3D730032632F /* MissionResultCell.swift */; };
@@ -132,7 +131,6 @@
 		0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTeamViewController.swift; sourceTree = "<group>"; };
 		0C880912206582F300BD64C3 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 		0C8809142066BB0E00BD64C3 /* ShowGameInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowGameInfoViewController.swift; sourceTree = "<group>"; };
-		0C8809162066BC5700BD64C3 /* GameInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoView.swift; sourceTree = "<group>"; };
 		0C8809182066CB1400BD64C3 /* TableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeaderView.swift; sourceTree = "<group>"; };
 		0CBD8C60205D3D110032632F /* MissionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResultViewController.swift; sourceTree = "<group>"; };
 		0CBD8C62205D3D730032632F /* MissionResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionResultCell.swift; sourceTree = "<group>"; };
@@ -248,18 +246,11 @@
 		0C4D6CDE205AD5B50029ED43 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0C4D6CEB205ADD630029ED43 /* TableViewCells */,
-				0C4D6CE1205AD5FF0029ED43 /* HomeView.swift */,
-				0C8809162066BC5700BD64C3 /* GameInfoView.swift */,
-				0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */,
-				0C4D6CFB205AE7820029ED43 /* MainGameView.swift */,
-				0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */,
-				0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */,
-				0CBD8C66205D470C0032632F /* QuestPhaseView.swift */,
-				0C38DF05205D496E00EBBFFD /* QuestResultView.swift */,
-				0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */,
 				0C8809182066CB1400BD64C3 /* TableHeaderView.swift */,
-				0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */,
+				0C4D6CEB205ADD630029ED43 /* TableViewCells */,
+				0CDE5A65206BF28800963695 /* Home */,
+				0CDE5A67206BF29100963695 /* Main Game */,
+				0CDE5A66206BF28B00963695 /* Expansions */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,21 +258,9 @@
 		0C4D6CE0205AD5C80029ED43 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0C4D6CE3205AD8500029ED43 /* HomeViewController.swift */,
-				0C4D6CE5205ADA3A0029ED43 /* AllPlayersViewController.swift */,
-				0C0FC22520640D5900B9B71D /* SelectPlayersViewController.swift */,
-				0C0FC22720640E9700B9B71D /* SelectAdditionalClassesViewController.swift */,
-				0C0FC2312064223000B9B71D /* ClassDetailViewController.swift */,
-				0C8809142066BB0E00BD64C3 /* ShowGameInfoViewController.swift */,
-				0C4D6CFD205AE8BD0029ED43 /* ShowClassInfoViewController.swift */,
-				0C4D6CF7205AE0550029ED43 /* MainGameViewController.swift */,
-				0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */,
-				0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */,
-				0CBD8C60205D3D110032632F /* MissionResultViewController.swift */,
-				0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */,
-				0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */,
-				0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */,
-				0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */,
+				0CDE5A64206BF27300963695 /* Expansions */,
+				0CDE5A63206BF24D00963695 /* Main Game */,
+				0CDE5A62206BF24000963695 /* Home */,
 				0C0FC229206412F000B9B71D /* TableButtonViewController.swift */,
 			);
 			path = Controllers;
@@ -307,6 +286,72 @@
 				0C4D6CF3205ADE080029ED43 /* StringExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0CDE5A62206BF24000963695 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CE3205AD8500029ED43 /* HomeViewController.swift */,
+				0C4D6CE5205ADA3A0029ED43 /* AllPlayersViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0CDE5A63206BF24D00963695 /* Main Game */ = {
+			isa = PBXGroup;
+			children = (
+				0C0FC22520640D5900B9B71D /* SelectPlayersViewController.swift */,
+				0C0FC22720640E9700B9B71D /* SelectAdditionalClassesViewController.swift */,
+				0C0FC2312064223000B9B71D /* ClassDetailViewController.swift */,
+				0C8809142066BB0E00BD64C3 /* ShowGameInfoViewController.swift */,
+				0C4D6CFD205AE8BD0029ED43 /* ShowClassInfoViewController.swift */,
+				0C4D6CF7205AE0550029ED43 /* MainGameViewController.swift */,
+				0C4D6D0D205C36A90029ED43 /* SelectTeamViewController.swift */,
+				0C4D6D09205C32A10029ED43 /* MissionAgreementViewController.swift */,
+				0CBD8C60205D3D110032632F /* MissionResultViewController.swift */,
+				0CBD8C64205D3FD30032632F /* QuestPhaseViewController.swift */,
+				0C38DF03205D493A00EBBFFD /* QuestResultViewController.swift */,
+			);
+			path = "Main Game";
+			sourceTree = "<group>";
+		};
+		0CDE5A64206BF27300963695 /* Expansions */ = {
+			isa = PBXGroup;
+			children = (
+				0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */,
+				0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */,
+			);
+			path = Expansions;
+			sourceTree = "<group>";
+		};
+		0CDE5A65206BF28800963695 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CE1205AD5FF0029ED43 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		0CDE5A66206BF28B00963695 /* Expansions */ = {
+			isa = PBXGroup;
+			children = (
+				0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */,
+			);
+			path = Expansions;
+			sourceTree = "<group>";
+		};
+		0CDE5A67206BF29100963695 /* Main Game */ = {
+			isa = PBXGroup;
+			children = (
+				0C4D6CFF205AE9550029ED43 /* ShowPlayersClassView.swift */,
+				0C4D6CFB205AE7820029ED43 /* MainGameView.swift */,
+				0C4D6D03205C1EC00029ED43 /* GameBoardView.swift */,
+				0C4D6D0B205C32CE0029ED43 /* MissionAgreementView.swift */,
+				0CBD8C66205D470C0032632F /* QuestPhaseView.swift */,
+				0C38DF05205D496E00EBBFFD /* QuestResultView.swift */,
+				0C4D6D01205C0FC50029ED43 /* PassPhoneView.swift */,
+			);
+			path = "Main Game";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,7 +511,6 @@
 				0CDE5A5F206BAB2800963695 /* MagicMirrorResultViewController.swift in Sources */,
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
-				0C8809172066BC5700BD64C3 /* GameInfoView.swift in Sources */,
 				0C0FC21D206407F400B9B71D /* PlayerResult+CoreDataClass.swift in Sources */,
 				0C0FC22F20641A8700B9B71D /* GameClass+CoreDataClass.swift in Sources */,
 				0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */,
