@@ -47,7 +47,6 @@ class ShowClassInfoViewController: UIViewController {
     }
     
     @objc func tappedOnShowPlayersClassView(recognizer: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "startGame", sender: self)
         if recognizer.view == showPlayersClassView {
             guard let index = gameInfo.players.index(of: currentPlayer) else { return }
             if index + 1 < gameInfo.players.count {
@@ -55,10 +54,7 @@ class ShowClassInfoViewController: UIViewController {
             } else {
                 currentPlayer = gameInfo.players[0]
             }
-            print(currentPlayer.name!)
-            print(gameInfo.currentLeader.name!)
             if currentPlayer == gameInfo.currentLeader {
-                print("HERE")
                 doneShowing = true
             }
             self.passPhoneView.nameLabel.text = "Pass phone to \(self.currentPlayer.name!)"

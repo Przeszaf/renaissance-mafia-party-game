@@ -49,6 +49,11 @@ class QuestPhaseViewController: UIViewController {
             let controller = segue.destination as! QuestResultViewController
             controller.gameInfo = gameInfo
             controller.roundInfo = roundInfo
+        case "swordOfDistrustGive"?:
+            let controller = segue.destination as! SwordOfDistrustGiveViewController
+            controller.gameInfo = gameInfo
+            controller.roundInfo = roundInfo
+            controller.selectedPlayers = selectedPlayers
         default:
             preconditionFailure("Wronge segue identifier.")
         }
@@ -89,7 +94,11 @@ class QuestPhaseViewController: UIViewController {
     
     @objc func passPhoneViewPressed(recognizer: UITapGestureRecognizer) {
         if finishedAsking == true {
-            performSegue(withIdentifier: "showQuestResult", sender: self)
+            if gameInfo.expansions.contains(where: {$0.name == "Sword of Distrust"}) {
+                performSegue(withIdentifier: "swordOfDistrustGive", sender: self)
+            } else {
+                performSegue(withIdentifier: "showQuestResult", sender: self)
+            }
             return
         }
         questPhaseView.askLabel.text =  "Do you want this mission to succeed?"

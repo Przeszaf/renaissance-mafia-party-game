@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         newClass.about = "Psychic is good character that can sense people with power. Therefore know who is Wizard and Warlock"
                         newClass.isAdditional = true
                     case 6:
-                        newClass.name = "Ninja"
+                        newClass.name = "Outcast"
                         newClass.isGood = false
                         newClass.about = "Evil character that hides from everyone, even other evil characters"
                         newClass.isAdditional = true

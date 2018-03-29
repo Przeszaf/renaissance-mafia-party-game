@@ -41,10 +41,18 @@ class MissionResultViewController: UIViewController, TableButtonDelegate {
             selectedTeamGoes = true
         }
         
+        let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
+        if selectedTeamGoes {
+            headerView.textLabel.text = "Most people agreed! This team goes for a quest."
+        } else {
+            headerView.textLabel.text = "Most people disagreed! Please select another team."
+        }
+        tableViewController.tableView.tableHeaderView = headerView
+        
     }
     
     func touchUp() {
-        if selectedTeamGoes == true {
+        if selectedTeamGoes {
             performSegue(withIdentifier: "missionAgreed", sender: self)
         } else {
             gameInfo.nextLeader()

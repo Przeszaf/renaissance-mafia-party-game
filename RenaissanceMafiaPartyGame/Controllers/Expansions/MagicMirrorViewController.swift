@@ -35,7 +35,7 @@ class MagicMirrorViewController: UIViewController, UITableViewDelegate, UITableV
         button.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
         
         let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 70))
-        headerView.textLabel.text = "Which player do you want to check?"
+        headerView.textLabel.text = "Which player do you want to check? You are using Magic Mirror!"
         tableView.tableHeaderView = headerView
     }
     
@@ -72,7 +72,6 @@ class MagicMirrorViewController: UIViewController, UITableViewDelegate, UITableV
             selectedPlayer = players[indexPath.row]
             cell.accessoryType = .checkmark
         }
-        
     }
     
     

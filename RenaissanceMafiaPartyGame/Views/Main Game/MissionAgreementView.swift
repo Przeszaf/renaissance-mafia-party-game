@@ -11,12 +11,14 @@ import UIKit
 class MissionAgreementView: UIView {
     
     var askLabel = UILabel()
+    var teamLabel = UILabel()
     var agreeButton = UIButton()
     var disagreeButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(askLabel)
+        addSubview(teamLabel)
         addSubview(agreeButton)
         addSubview(disagreeButton)
         
@@ -39,9 +41,13 @@ class MissionAgreementView: UIView {
         askLabel.translatesAutoresizingMaskIntoConstraints = false
         agreeButton.translatesAutoresizingMaskIntoConstraints = false
         disagreeButton.translatesAutoresizingMaskIntoConstraints = false
+        teamLabel.translatesAutoresizingMaskIntoConstraints = false
         
         askLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 40).isActive = true
         askLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        
+        teamLabel.topAnchor.constraint(equalTo: askLabel.bottomAnchor, constant: 20).isActive = true
+        teamLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         
         agreeButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -20).isActive = true
         disagreeButton.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -20).isActive = true

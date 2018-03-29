@@ -24,6 +24,7 @@ class MissionAgreementViewController: UIViewController {
         currentPlayer = gameInfo.currentLeader
         missionAgreementView = MissionAgreementView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(missionAgreementView)
+        missionAgreementView.teamLabel.text = "\(selectedPlayers.map({$0.name!}).joined(separator: ", "))"
         missionAgreementView.isHidden = true
         missionAgreementView.alpha = 0
         

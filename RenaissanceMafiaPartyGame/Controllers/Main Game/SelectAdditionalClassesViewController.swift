@@ -64,7 +64,6 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
     
     
     func touchUp() {
-        print("Tapped")
         do {
             let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
             var knight: GameClass!

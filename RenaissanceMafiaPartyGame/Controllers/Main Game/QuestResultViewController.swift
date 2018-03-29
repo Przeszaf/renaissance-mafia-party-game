@@ -13,6 +13,8 @@ class QuestResultViewController: UIViewController {
     var questResultView: QuestResultView!
     var roundInfo: RoundInfo!
     var gameInfo: GameInfo!
+    var swordUsedByPlayer: Player?
+    var swordUsedOnPlayer: Player?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,10 @@ class QuestResultViewController: UIViewController {
             if decision == false {
                 failureCount += 1
             }
+        }
+        
+        if let usedBy = swordUsedByPlayer, let usedOn = swordUsedOnPlayer {
+            questResultView.swordUsedLabel.text = "Sword of Distrust was used by \(usedBy) on \(usedOn)!"
         }
         
         if failureCount > 0 {

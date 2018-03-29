@@ -63,6 +63,10 @@
 		0CDE5A61206BABAC00963695 /* MagicMirrorResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */; };
 		0CDE5A69206BF72100963695 /* ClassDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CDE5A68206BF72100963695 /* ClassDetailView.swift */; };
 		0CEB6304206BFBB300FD7E01 /* NextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6303206BFBB200FD7E01 /* NextButtonView.swift */; };
+		0CEB630A206D39A900FD7E01 /* SwordOfDistrustGiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB6309206D39A900FD7E01 /* SwordOfDistrustGiveViewController.swift */; };
+		0CEB630C206D39B200FD7E01 /* SwordOfDistrustAskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB630B206D39B200FD7E01 /* SwordOfDistrustAskViewController.swift */; };
+		0CEB630E206D39BB00FD7E01 /* SwordOfDistrustUseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB630D206D39BB00FD7E01 /* SwordOfDistrustUseViewController.swift */; };
+		0CEB6310206D3D3E00FD7E01 /* SwordOfDistrustAskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEB630F206D3D3E00FD7E01 /* SwordOfDistrustAskView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +149,10 @@
 		0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicMirrorResultView.swift; sourceTree = "<group>"; };
 		0CDE5A68206BF72100963695 /* ClassDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassDetailView.swift; sourceTree = "<group>"; };
 		0CEB6303206BFBB200FD7E01 /* NextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonView.swift; sourceTree = "<group>"; };
+		0CEB6309206D39A900FD7E01 /* SwordOfDistrustGiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordOfDistrustGiveViewController.swift; sourceTree = "<group>"; };
+		0CEB630B206D39B200FD7E01 /* SwordOfDistrustAskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordOfDistrustAskViewController.swift; sourceTree = "<group>"; };
+		0CEB630D206D39BB00FD7E01 /* SwordOfDistrustUseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordOfDistrustUseViewController.swift; sourceTree = "<group>"; };
+		0CEB630F206D3D3E00FD7E01 /* SwordOfDistrustAskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwordOfDistrustAskView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +331,9 @@
 		0CDE5A64206BF27300963695 /* Expansions */ = {
 			isa = PBXGroup;
 			children = (
+				0CEB6309206D39A900FD7E01 /* SwordOfDistrustGiveViewController.swift */,
+				0CEB630B206D39B200FD7E01 /* SwordOfDistrustAskViewController.swift */,
+				0CEB630D206D39BB00FD7E01 /* SwordOfDistrustUseViewController.swift */,
 				0CDE5A5C206AABF900963695 /* MagicMirrorViewController.swift */,
 				0CDE5A5E206BAB2800963695 /* MagicMirrorResultViewController.swift */,
 			);
@@ -341,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				0CDE5A60206BABAC00963695 /* MagicMirrorResultView.swift */,
+				0CEB630F206D3D3E00FD7E01 /* SwordOfDistrustAskView.swift */,
 			);
 			path = Expansions;
 			sourceTree = "<group>";
@@ -516,10 +528,12 @@
 				0C0FC213206405F800B9B71D /* RenaissanceMafiaPartyGame.xcdatamodeld in Sources */,
 				0C4D6CF4205ADE080029ED43 /* StringExtension.swift in Sources */,
 				0C4D6D0E205C36A90029ED43 /* SelectTeamViewController.swift in Sources */,
+				0CEB6310206D3D3E00FD7E01 /* SwordOfDistrustAskView.swift in Sources */,
 				0CDE5A5F206BAB2800963695 /* MagicMirrorResultViewController.swift in Sources */,
 				0C4D6CB1205AD3640029ED43 /* AppDelegate.swift in Sources */,
 				0C4D6CE6205ADA3A0029ED43 /* AllPlayersViewController.swift in Sources */,
 				0C0FC21D206407F400B9B71D /* PlayerResult+CoreDataClass.swift in Sources */,
+				0CEB630A206D39A900FD7E01 /* SwordOfDistrustGiveViewController.swift in Sources */,
 				0C0FC22F20641A8700B9B71D /* GameClass+CoreDataClass.swift in Sources */,
 				0CBD8C63205D3D730032632F /* MissionResultCell.swift in Sources */,
 				0C4D6D0A205C32A10029ED43 /* MissionAgreementViewController.swift in Sources */,
@@ -528,8 +542,10 @@
 				0C0FC23020641A8700B9B71D /* GameClass+CoreDataProperties.swift in Sources */,
 				0CBD8C61205D3D110032632F /* MissionResultViewController.swift in Sources */,
 				0C4D6CF2205ADDEB0029ED43 /* DateExtension.swift in Sources */,
+				0CEB630E206D39BB00FD7E01 /* SwordOfDistrustUseViewController.swift in Sources */,
 				0C0FC222206407F400B9B71D /* Match+CoreDataProperties.swift in Sources */,
 				0C4D6D0C205C32CE0029ED43 /* MissionAgreementView.swift in Sources */,
+				0CEB630C206D39B200FD7E01 /* SwordOfDistrustAskViewController.swift in Sources */,
 				0C0FC22A206412F000B9B71D /* TableButtonViewController.swift in Sources */,
 				0C4D6D02205C0FC50029ED43 /* PassPhoneView.swift in Sources */,
 				0C0FC22620640D5900B9B71D /* SelectPlayersViewController.swift in Sources */,

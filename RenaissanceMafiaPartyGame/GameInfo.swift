@@ -36,7 +36,7 @@ class GameInfo {
             var visiblePlayers = [Player]()
             guard let playerClass = playersClasses[player] else { return }
             switch playerClass.name! {
-            case "Knight", "Ninja":
+            case "Knight", "Outcast":
                 visiblePlayers = [Player]()
             case "Wizard":
                 for (anotherPlayer, anotherPlayerClass) in playersClasses {
