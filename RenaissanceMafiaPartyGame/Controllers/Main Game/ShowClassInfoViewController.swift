@@ -72,6 +72,7 @@ class ShowClassInfoViewController: UIViewController {
     
     
     @objc func tappedOnPassPhoneView(recognizer: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "startGame", sender: self)
         if doneShowing {
             performSegue(withIdentifier: "startGame", sender: self)
         }

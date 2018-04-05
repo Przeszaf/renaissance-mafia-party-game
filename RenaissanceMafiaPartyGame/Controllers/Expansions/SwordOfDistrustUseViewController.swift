@@ -48,6 +48,8 @@ class SwordOfDistrustUseViewController: UIViewController, TableButtonDelegate {
             let controller = segue.destination as! QuestResultViewController
             controller.gameInfo = gameInfo
             controller.roundInfo = roundInfo
+            controller.swordUsedByPlayer = playerWithSword
+            controller.swordUsedOnPlayer = selectedPlayer
         }
     }
 }
