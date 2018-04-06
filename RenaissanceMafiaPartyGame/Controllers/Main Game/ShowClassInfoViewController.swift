@@ -16,6 +16,9 @@ class ShowClassInfoViewController: UIViewController {
     var gameInfo: GameInfo!
     var currentPlayer: Player!
     var doneShowing = false
+    var middleColor: CGColor!
+    var passPhoneGradient = CAGradientLayer()
+    var showPlayersGradient = CAGradientLayer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,7 @@ class ShowClassInfoViewController: UIViewController {
         showPlayersClassView = ShowPlayersClassView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(showPlayersClassView)
         showPlayersClassView.isHidden = true
-        showPlayersClassView.alpha = 0
+        showPlayersClassView.alpha = 1
         
         passPhoneView = PassPhoneView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(passPhoneView)
@@ -43,7 +46,7 @@ class ShowClassInfoViewController: UIViewController {
         showPlayersClassView.visibilityLabel.numberOfLines = 0
         
         passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
-        
+        configureGradient(for: passPhoneView, colors: [randomColor(), randomColor()], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
     }
     
     @objc func tappedOnShowPlayersClassView(recognizer: UITapGestureRecognizer) {
@@ -59,24 +62,29 @@ class ShowClassInfoViewController: UIViewController {
             }
             self.passPhoneView.nameLabel.text = "Pass phone to \(self.currentPlayer.name!)"
             self.passPhoneView.isHidden = false
+            let leftColor = showPlayersGradient.colors?.last as! CGColor
+            let rightColor = randomColor()
+            configureGradient(for: passPhoneView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
+            
             UIView.animate(withDuration: 1, animations: {
-                self.passPhoneView.alpha = 1
                 self.passPhoneView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-                self.showPlayersClassView.alpha = 0
-                self.showPlayersClassView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+                self.showPlayersClassView.frame = CGRect(x: -self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             }, completion: { (finished) in
                 self.showPlayersClassView.isHidden = true
+                self.showPlayersClassView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             })
         }
     }
     
     
     @objc func tappedOnPassPhoneView(recognizer: UITapGestureRecognizer) {
-        performSegue(withIdentifier: "startGame", sender: self)
         if doneShowing {
             performSegue(withIdentifier: "startGame", sender: self)
         }
         self.showPlayersClassView.isHidden = false
+        let leftColor = passPhoneGradient.colors?.last as! CGColor
+        let rightColor = randomColor()
+        configureGradient(for: showPlayersClassView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
         self.showPlayersClassView.nameLabel.text = "Hello \(currentPlayer.name!)!"
         self.showPlayersClassView.classLabel.text = "You are \(self.gameInfo.playersClasses[self.currentPlayer]?.name! ?? "ERROR")"
         var string = [String]()
@@ -95,12 +103,11 @@ class ShowClassInfoViewController: UIViewController {
             self.showPlayersClassView.visibilityLabel.text = ""
         }
         UIView.animate(withDuration: 1, animations: {
-            self.passPhoneView.alpha = 0
-            self.passPhoneView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-            self.showPlayersClassView.alpha = 1
+            self.passPhoneView.frame = CGRect(x: -self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             self.showPlayersClassView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }, completion: { (finished) in
             self.passPhoneView.isHidden = true
+            self.passPhoneView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         })
     }
     
@@ -111,4 +118,33 @@ class ShowClassInfoViewController: UIViewController {
             controller.createNewRound()
         }
     }
+    
+    func configureGradient(for view: UIView, colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
+        let gradientLocations: [NSNumber] = [0.0, 1.0]
+        if view == passPhoneView {
+            passPhoneGradient.removeFromSuperlayer()
+            passPhoneGradient = CAGradientLayer()
+            passPhoneGradient.colors = colors
+            passPhoneGradient.locations = gradientLocations
+            passPhoneGradient.startPoint = startPoint
+            passPhoneGradient.endPoint = endPoint
+            passPhoneGradient.frame = view.bounds
+            view.layer.insertSublayer(passPhoneGradient, at: 0)
+        } else if view == showPlayersClassView {
+            showPlayersGradient.removeFromSuperlayer()
+            showPlayersGradient = CAGradientLayer()
+            showPlayersGradient.colors = colors
+            showPlayersGradient.locations = gradientLocations
+            showPlayersGradient.startPoint = startPoint
+            showPlayersGradient.endPoint = endPoint
+            showPlayersGradient.frame = view.bounds
+            view.layer.insertSublayer(showPlayersGradient, at: 0)
+        }
+    }
+    
+    func randomColor() -> CGColor {
+        let randomColor = UIColor(red: CGFloat(arc4random_uniform(255)) / 255.0, green: CGFloat(arc4random_uniform(255)) / 255.0, blue: CGFloat(arc4random_uniform(255)) / 255.0, alpha: CGFloat(arc4random_uniform(255)) / 255.0)
+        return randomColor.cgColor
+    }
+    
 }
