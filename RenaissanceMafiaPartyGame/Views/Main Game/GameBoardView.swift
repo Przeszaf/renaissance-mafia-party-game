@@ -42,6 +42,8 @@ class GameBoardView: UIView {
     
     func setup() {
         let centerX: CGFloat = viewFrame.width / 2
+        
+        //Creates 5 circles with or without fill color
         for i in 0..<5 {
             let centerY: CGFloat = 5 + radius + 2 * (5 + radius) * CGFloat(i)
             let shapeLayer = CAShapeLayer()

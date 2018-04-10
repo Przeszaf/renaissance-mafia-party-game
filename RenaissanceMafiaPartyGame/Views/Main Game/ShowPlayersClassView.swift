@@ -24,8 +24,6 @@ class ShowPlayersClassView: UIView {
         classLabel.font = font
         visibilityLabel.font = font
         visibilityLabel.textAlignment = .center
-        
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

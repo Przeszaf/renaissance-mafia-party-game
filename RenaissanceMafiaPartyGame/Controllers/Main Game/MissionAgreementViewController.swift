@@ -21,9 +21,14 @@ class MissionAgreementViewController: UIViewController {
     var currentPlayer: Player!
     var finishedAsking = false
     
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         currentPlayer = gameInfo.currentLeader
+        
+        //Create views
         missionAgreementView = MissionAgreementView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(missionAgreementView)
         missionAgreementView.teamLabel.text = "\(selectedPlayers.map({$0.name!}).joined(separator: ", "))"
@@ -36,6 +41,8 @@ class MissionAgreementViewController: UIViewController {
         passPhoneView.isHidden = false
         view.addSubview(passPhoneView)
         
+        
+        //Create gradient with random colors for first view
         configureGradient(for: passPhoneView, colors: [randomColor(), randomColor()], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
         passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         
@@ -43,6 +50,7 @@ class MissionAgreementViewController: UIViewController {
         passPhoneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showMissionResult"?:
@@ -55,26 +63,35 @@ class MissionAgreementViewController: UIViewController {
         }
     }
     
+    //MARK: - Buttons and touches
+    
     @objc func agreeOrDisagreeButtonPressed(_ sender: UIButton) {
+        //Update the dictionary of decisions
         if sender == missionAgreementView.agreeButton {
             roundInfo.playersMissionDecision[currentPlayer] = true
         } else if sender == missionAgreementView.disagreeButton {
             roundInfo.playersMissionDecision[currentPlayer] = false
         }
         let index = gameInfo.players.index(of: currentPlayer)!
+        //Set next player
         if index + 1 < gameInfo.players.count {
             currentPlayer = gameInfo.players[index + 1]
         } else {
             currentPlayer = gameInfo.players[0]
         }
+        //If it came back to leader, then finish asking for decisions
         if currentPlayer == gameInfo.currentLeader {
             finishedAsking = true
         }
         passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         passPhoneView.isHidden = false
+        
+        //Create gradient
         let leftColor = missionAgreementGradient.colors?.last as! CGColor
         let rightColor = randomColor()
         configureGradient(for: passPhoneView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
+        
+        //Right to left animation
         UIView.animate(withDuration: 1, animations: {
             self.missionAgreementView.frame = CGRect(x: -self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             self.passPhoneView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -90,11 +107,16 @@ class MissionAgreementViewController: UIViewController {
             performSegue(withIdentifier: "showMissionResult", sender: self)
             return
         }
+        
         missionAgreementView.askLabel.text = "Do you accept this mission?"
         missionAgreementView.isHidden = false
+        
+        //Create gradient
         let leftColor = passPhoneGradient.colors?.last as! CGColor
         let rightColor = randomColor()
         configureGradient(for: missionAgreementView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
+        
+        //Right to left animation
         UIView.animate(withDuration: 1, animations: {
             self.passPhoneView.frame = CGRect(x: -self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             self.missionAgreementView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -104,6 +126,7 @@ class MissionAgreementViewController: UIViewController {
         }
     }
     
+    //MARK: - Other functions
     func configureGradient(for view: UIView, colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLocations: [NSNumber] = [0.0, 1.0]
         if view == passPhoneView {

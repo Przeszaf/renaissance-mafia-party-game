@@ -22,6 +22,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
     
     var managedContext: NSManagedObjectContext!
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +30,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
         
         managedContext = appDelegate.persistentContainer.viewContext
         
+        //Fetch evil and good classes
         do {
             let evilRequest = NSFetchRequest<GameClass>(entityName: "GameClass")
             evilRequest.predicate = NSPredicate(format: "isAdditional == YES AND isGood == NO")
@@ -49,6 +51,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
         tableView.goodClassesAvailable = goodClassesAvailable
         tableView.expansionsAvailable = expansionsAvailable
         
+        //Set header view and
         let headerView = TableHeaderView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 100))
         headerView.textLabel.text = "Select up to \(gameInfo.goodClassesCount - 1) good and \(gameInfo.evilClassesCount - 1) evil classes and as many expansions as you wish."
         tableView.tableView.tableHeaderView = headerView
@@ -62,7 +65,9 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
     }
 
     
+    //MARK: - Segue
     
+    //When touch up on Next button
     func touchUp() {
         do {
             let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
@@ -70,6 +75,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
             var wizard: GameClass!
             var bandit: GameClass!
             var assassin: GameClass!
+            //Get "basic" classes
             for gameClass in classes {
                 if gameClass.name == "Knight" {
                     knight = gameClass
@@ -81,6 +87,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
                     assassin = gameClass
                 }
             }
+            //Add wizard and rest players as knight
             for i in 0..<gameInfo.goodClassesCount - goodClassesSelected {
                 if i == 0 {
                     gameInfo.classes.append(wizard)
@@ -88,6 +95,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
                     gameInfo.classes.append(knight)
                 }
             }
+            //Add assassin and rest players as bandits
             for i in 0..<gameInfo.evilClassesCount - evilClassesSelected {
                 if i == 0 {
                     gameInfo.classes.append(assassin)
@@ -114,6 +122,7 @@ class SelectAdditionalClassesViewController: UIViewController, TableButtonDelega
 }
 
 
+//MARK: - TableViewController
 class SelectAdditionalClassesTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var evilClassesAvailable: [GameClass]!
@@ -121,7 +130,7 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     var expansionsAvailable: [Expansion]!
     var selectClassesViewController: SelectAdditionalClassesViewController!
     
-    //MARK: - Overriding functions
+    //MARK: - Lifecycle of VC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -137,7 +146,7 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     }
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - TableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -189,9 +198,11 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
     }
     
     
+    //1st section is for good classes, 2nd for evil and 3rd for expansions
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) else { return }
         if indexPath.section == 0 {
+            //Only allow for count - 1 classes to be selected
             if let index = selectClassesViewController.gameInfo.classes.index(of: goodClassesAvailable[indexPath.row]) {
                 selectClassesViewController.gameInfo.classes.remove(at: index)
                 selectClassesViewController.goodClassesSelected -= 1
@@ -212,6 +223,7 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
                 cell.accessoryType = .checkmark
             }
         } else if indexPath.section == 2 {
+            //All expansions can be selected
             if let index = selectClassesViewController.gameInfo.expansions.index(of: expansionsAvailable[indexPath.row]) {
                 selectClassesViewController.gameInfo.expansions.remove(at: index)
                 cell.accessoryType = .none
@@ -226,7 +238,7 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
         return 160
     }
     
-    
+    //MARK: - Button
     @objc func showClassDetails(_ sender: UIButton) {
         let classDetails = ClassDetailViewController()
     
@@ -241,6 +253,7 @@ class SelectAdditionalClassesTableViewController: UITableViewController, UITextV
             classDetails.key = "Expansion"
         }
         
+        //Presenting classDetails modally
         classDetails.modalPresentationStyle = .overFullScreen
         classDetails.modalTransitionStyle = .crossDissolve
         self.present(classDetails, animated: true, completion: nil)

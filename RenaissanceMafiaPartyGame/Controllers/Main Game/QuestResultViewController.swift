@@ -18,6 +18,8 @@ class QuestResultViewController: UIViewController {
     var failureCount = 0
     var gradientLayer: CAGradientLayer!
     
+    
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         questResultView = QuestResultView(frame: view.frame)
@@ -58,6 +60,8 @@ class QuestResultViewController: UIViewController {
         } else {
             toColors = [UIColor.red.cgColor, UIColor.blue.cgColor]
         }
+        
+        //Gradient animation
         let gradientColorAnimation = CABasicAnimation(keyPath: "colors")
         gradientColorAnimation.toValue = toColors
         gradientColorAnimation.duration = 4.00
@@ -67,6 +71,7 @@ class QuestResultViewController: UIViewController {
         gradientLayer.add(gradientColorAnimation, forKey: "animateGradient")
     }
     
+    //MARK: - Touch ups
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainGameViewController") as! MainGameViewController
@@ -78,6 +83,8 @@ class QuestResultViewController: UIViewController {
         show(mainVC, sender: self)
     }
     
+    
+    //MARK: - Other functions
     func configureGradient(colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLocations: [NSNumber] = [0,1.0]
         

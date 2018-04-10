@@ -22,9 +22,12 @@ class ShowGameInfoViewController: UIViewController, TableButtonDelegate {
     
     var managedContext: NSManagedObjectContext!
     
+    
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Sort classes into good and evil
         for gameClass in gameInfo.classes {
             if gameClass.isGood {
                 goodClasses.append(gameClass)
@@ -34,7 +37,7 @@ class ShowGameInfoViewController: UIViewController, TableButtonDelegate {
             }
         }
         
-        
+        //Set up children table views
         let tableView = self.childViewControllers.first as! ShowGameInfoTableViewController
         tableView.evilClasses = evilClasses
         tableView.goodClasses = goodClasses
@@ -49,7 +52,7 @@ class ShowGameInfoViewController: UIViewController, TableButtonDelegate {
         
     }
 
-    
+    //MARK: - Segues
     @objc func touchUp() {
         if gameInfo.classes.count < gameInfo.players.count {
         } else {
@@ -65,14 +68,14 @@ class ShowGameInfoViewController: UIViewController, TableButtonDelegate {
     }
 }
 
-
+//MARK: - TableViewController
 class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var evilClasses: [GameClass]!
     var goodClasses: [GameClass]!
     var expansions: [Expansion]!
     
-    //MARK: - Overriding functions
+    //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -85,7 +88,7 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
     }
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -159,6 +162,7 @@ class ShowGameInfoTableViewController: UITableViewController, UITextViewDelegate
             classDetails.key = "Expansion"
         }
         
+        //Present classDetails modally
         classDetails.modalPresentationStyle = .overFullScreen
         classDetails.modalTransitionStyle = .crossDissolve
         self.present(classDetails, animated: true, completion: nil)

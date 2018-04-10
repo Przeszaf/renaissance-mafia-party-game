@@ -15,6 +15,7 @@ class SelectPlayersViewController: UIViewController, TableButtonDelegate {
     
     let gameInfo = GameInfo()
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +27,7 @@ class SelectPlayersViewController: UIViewController, TableButtonDelegate {
         
     }
     
+    //MARK: - Segues
     func touchUp() {
         if gameInfo.players.count >= 5 {
             performSegue(withIdentifier: "selectAdditionalClasses", sender: self)
@@ -42,6 +44,7 @@ class SelectPlayersViewController: UIViewController, TableButtonDelegate {
 }
 
 
+//MARK: - TableViewController
 class SelectPlayersTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var players: [Player]!
@@ -49,7 +52,7 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
     
     var selectPlayersViewController: SelectPlayersViewController!
     
-    //MARK: - Overriding functions
+    //MARK: - Lifecycle of VC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -76,7 +79,7 @@ class SelectPlayersTableViewController: UITableViewController, UITextViewDelegat
     }
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - TableView
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let player = players[indexPath.row]

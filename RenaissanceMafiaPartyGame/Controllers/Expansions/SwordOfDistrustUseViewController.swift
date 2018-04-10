@@ -18,9 +18,13 @@ class SwordOfDistrustUseViewController: UIViewController, TableButtonDelegate {
     var playersAvailable: [Player]!
     var selectedPlayer: Player?
     
+    //MARK: - Lifecycle of VC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         playersAvailable = selectedPlayers
+        
+        //Cannot use sword on yourself
         let index = playersAvailable.index(of: playerWithSword)!
         playersAvailable.remove(at: index)
         
@@ -36,8 +40,10 @@ class SwordOfDistrustUseViewController: UIViewController, TableButtonDelegate {
     }
     
     
+    //MARK: - Segues
     func touchUp() {
         if selectedPlayer != nil {
+            //Change decision of selected player
             roundInfo.playersQuestDecision[selectedPlayer!] = !roundInfo.playersQuestDecision[selectedPlayer!]!
             performSegue(withIdentifier: "questResults", sender: self)
         }
@@ -54,6 +60,8 @@ class SwordOfDistrustUseViewController: UIViewController, TableButtonDelegate {
     }
 }
 
+
+//MARK: - TableViewController
 class SwordOfDistrustUseTableViewController: UITableViewController {
     var parentView: SwordOfDistrustUseViewController!
     

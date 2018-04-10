@@ -18,7 +18,7 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
     
     var toolbar: UIToolbar!
     
-    //MARK: - Overriding functions
+    //MARK: - Lifecycle of VC
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -45,6 +45,7 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonBar))
     
         
+        //Fetching all players
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         managedContext = appDelegate.persistentContainer.viewContext
         do {
@@ -55,7 +56,7 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
     }
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //If we want to add new player, then create additional cell
@@ -125,7 +126,7 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
     
     
     
-    //MARK: - Button
+    //MARK: - Buttons
     
     //Adding new players
     
@@ -232,7 +233,7 @@ class AllPlayersViewController: UITableViewController, UITextViewDelegate {
     }
     
     
-    
+    //MARK: - Other functions
     func createToolbarWith(leftButton: UIBarButtonItem, rightButton: UIBarButtonItem) -> UIToolbar {
     let toolbar = UIToolbar()
     toolbar.barStyle = UIBarStyle.default

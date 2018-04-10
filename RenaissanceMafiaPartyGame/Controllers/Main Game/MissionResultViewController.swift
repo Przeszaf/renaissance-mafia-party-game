@@ -15,12 +15,14 @@ class MissionResultViewController: UIViewController, TableButtonDelegate {
     var selectedPlayers: [Player]!
     var selectedTeamGoes: Bool!
     
+    
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         var teamAccepted = 0
         var teamNotAccepted = 0
+        
         for (_, decision) in roundInfo.playersMissionDecision {
             if decision == true {
                 teamAccepted += 1
@@ -28,12 +30,16 @@ class MissionResultViewController: UIViewController, TableButtonDelegate {
                 teamNotAccepted += 1
             }
         }
+        
+        //Check if team should go on quest
         if teamAccepted < teamNotAccepted {
             selectedTeamGoes = false
             roundInfo.failedMissionsCount += 1
         } else {
             selectedTeamGoes = true
         }
+        
+        //Setup chids view controllers
         
         let buttonViewController = childViewControllers.last! as! TableButtonViewController
         buttonViewController.delegate = self
@@ -52,6 +58,7 @@ class MissionResultViewController: UIViewController, TableButtonDelegate {
         tableViewController.missionAccepted = selectedTeamGoes
     }
     
+    //MARK: - Segues
     func touchUp() {
         if selectedTeamGoes {
             performSegue(withIdentifier: "missionAgreed", sender: self)
@@ -72,10 +79,9 @@ class MissionResultViewController: UIViewController, TableButtonDelegate {
             controller.gameInfo = gameInfo
         }
     }
-    
-    
 }
 
+//MARK: - TableViewController
 class MissionResultTableViewController: UITableViewController, CAAnimationDelegate {
     
     var players: [Player]!
@@ -84,7 +90,7 @@ class MissionResultTableViewController: UITableViewController, CAAnimationDelega
     var missionAccepted: Bool!
     let fromColors = [UIColor(red: 0.5, green: 0, blue: 1, alpha: 1).cgColor, UIColor(red: 0.5, green: 1, blue: 0.5, alpha: 1).cgColor]
     
-    //MARK: - Overriding functions
+    //MARK: - Lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -95,6 +101,8 @@ class MissionResultTableViewController: UITableViewController, CAAnimationDelega
         } else {
             toColors = [UIColor.red.cgColor, UIColor.blue.cgColor]
         }
+        
+        //MARK: - Create gradient animation
         let gradientColorAnimation = CABasicAnimation(keyPath: "colors")
         gradientColorAnimation.fromValue = fromColors
         gradientColorAnimation.toValue = toColors
@@ -119,13 +127,10 @@ class MissionResultTableViewController: UITableViewController, CAAnimationDelega
         let endPoints = CGPoint(x: 1, y: 2.5)
         configureGradient(colors: fromColors, startPoint: startPoint, endPoint: endPoints)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
+
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -150,6 +155,7 @@ class MissionResultTableViewController: UITableViewController, CAAnimationDelega
         return players.count
     }
     
+    //MARK: - Other functions
     
     func configureGradient(colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLocations: [NSNumber] = [0.0, 1.0]

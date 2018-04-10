@@ -16,6 +16,7 @@ class TableButtonViewController: UIViewController, UIGestureRecognizerDelegate {
     var nextButtonView: NextButtonView!
     var delegate: TableButtonDelegate?
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clear
@@ -29,7 +30,7 @@ class TableButtonViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    
+    //MARK: - Touch ups
     @objc func tappedView(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
             nextButtonView.removeFromSuperview()
@@ -44,10 +45,4 @@ class TableButtonViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
     }
-    
-    
-    
-    
-    
-    
 }

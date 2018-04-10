@@ -13,6 +13,8 @@ class HomeViewController: UIViewController {
     var homeView: HomeView!
     var managedContext: NSManagedObjectContext!
     
+    
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         homeView = HomeView(frame: view.frame)
@@ -26,7 +28,7 @@ class HomeViewController: UIViewController {
     }
     
     
-    
+    //MARK: - Buttons
     @objc func seeAllPlayersButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "showAllPlayers", sender: nil)
     }
@@ -36,6 +38,7 @@ class HomeViewController: UIViewController {
     }
     
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showAllPlayers"?:

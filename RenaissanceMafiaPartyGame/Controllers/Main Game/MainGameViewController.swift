@@ -15,6 +15,8 @@ class MainGameViewController: UIViewController {
     var gameInfo: GameInfo!
     var useMagicMirror = false
     
+    //MARK: - Lifecycle of VC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,12 +24,15 @@ class MainGameViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //If last round was won (true) or lost (false) then create new round
         if roundInfo.roundWin != nil {
             createNewRound()
         }
         
         var roundsWon = 0
         var roundsLost = 0
+        
+        //Create correct fillColors for view
         var fillColors = [UIColor]()
         for round in gameInfo.rounds {
             if round.roundWin == true {
@@ -39,6 +44,7 @@ class MainGameViewController: UIViewController {
             }
         }
         
+        //Create view
         mainGameView = MainGameView(frame: view.frame, fillColors: fillColors)
         view.addSubview(mainGameView)
         mainGameView.nextButton.addTarget(self, action: #selector(nextButtonPressed(_:)), for: .touchUpInside)
@@ -50,6 +56,7 @@ class MainGameViewController: UIViewController {
             label.sizeToFit()
         }
         
+        //If there is magic mirror, then show its owner
         if gameInfo.expansions.contains(where: {$0.name! == "Magic Mirror"}) {
             if gameInfo.rounds.count == 1 {
                 gameInfo.magicMirrorOwner = gameInfo.players[Int(arc4random_uniform(UInt32(gameInfo.players.count)))]
@@ -59,6 +66,7 @@ class MainGameViewController: UIViewController {
     }
     
     
+    //MARK: - Segues
     @objc func nextButtonPressed(_ sender: UIButton) {
         if useMagicMirror {
             performSegue(withIdentifier: "useMagicMirror", sender: nil)
@@ -84,6 +92,7 @@ class MainGameViewController: UIViewController {
         }
     }
     
+    //MARK: - Other functions
     
     func createNewRound() {
         roundInfo = RoundInfo()

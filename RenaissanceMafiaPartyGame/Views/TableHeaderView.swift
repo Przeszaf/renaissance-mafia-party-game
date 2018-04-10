@@ -39,6 +39,7 @@ class TableHeaderView: UIView {
     }
     
     
+    //Bottom path
     func createBottomLine() -> UIBezierPath {
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 5, y: self.frame.height - 5))

@@ -21,8 +21,11 @@ class QuestPhaseViewController: UIViewController {
     var currentPlayer: Player!
     var finishedAsking = false
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Configure view
         currentPlayer = selectedPlayers[0]
         questPhaseView = QuestPhaseView(frame: CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         view.addSubview(questPhaseView)
@@ -43,6 +46,7 @@ class QuestPhaseViewController: UIViewController {
     }
     
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "showQuestResult"?:
@@ -59,16 +63,22 @@ class QuestPhaseViewController: UIViewController {
         }
     }
     
+    //MARK: - Buttons and touches
+    
     @objc func successOrFailButtonPressed(_ sender: UIButton) {
+        //Update decision dictionary
         if sender == questPhaseView.successButton {
             roundInfo.playersQuestDecision[currentPlayer] = true
         } else if sender == questPhaseView.failButton {
             let playerClass = gameInfo.playersClasses[currentPlayer]!
+            //Good player cannot vote for failure
             if playerClass.isGood {
                 return
             }
             roundInfo.playersQuestDecision[currentPlayer] = false
         }
+        
+        //Go to next player
         let index = selectedPlayers.index(of: currentPlayer)!
         if index + 1 < selectedPlayers.count {
             currentPlayer = selectedPlayers[index + 1]
@@ -82,6 +92,8 @@ class QuestPhaseViewController: UIViewController {
             passPhoneView.nameLabel.text = "Pass phone to \(currentPlayer.name!)"
         }
         passPhoneView.isHidden = false
+        
+        //Configure gradient
         let leftColor = questPhaseGradient.colors?.last as! CGColor
         let rightColor = randomColor()
         configureGradient(for: passPhoneView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
@@ -96,6 +108,7 @@ class QuestPhaseViewController: UIViewController {
     
     @objc func passPhoneViewPressed(recognizer: UITapGestureRecognizer) {
         if finishedAsking == true {
+            //If sword of distrust is selected, then perform its segue
             if gameInfo.expansions.contains(where: {$0.name == "Sword of Distrust"}) {
                 performSegue(withIdentifier: "swordOfDistrustGive", sender: self)
             } else {
@@ -105,9 +118,13 @@ class QuestPhaseViewController: UIViewController {
         }
         questPhaseView.askLabel.text =  "Do you want this mission to succeed?"
         questPhaseView.isHidden = false
+        
+        //Create gradient
         let leftColor = passPhoneGradient.colors?.last as! CGColor
         let rightColor = randomColor()
         configureGradient(for: questPhaseView, colors: [leftColor, rightColor], startPoint: CGPoint(x: 0, y: 0), endPoint: CGPoint(x: 1, y: 0))
+        
+        //Right to left animation
         UIView.animate(withDuration: 0.1, animations: {
             self.passPhoneView.frame = CGRect(x: -self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
             self.questPhaseView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -116,6 +133,8 @@ class QuestPhaseViewController: UIViewController {
             self.passPhoneView.frame = CGRect(x: self.view.frame.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         }
     }
+    
+    //MARK: - Other functions
     
     func configureGradient(for view: UIView, colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
         let gradientLocations: [NSNumber] = [0.0, 1.0]

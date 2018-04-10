@@ -16,12 +16,16 @@ class MagicMirrorViewController: UIViewController, UITableViewDelegate, UITableV
     var players: [Player]!
     var selectedPlayer: Player?
     
+    
+    //MARK: - Lifecycle of VC
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
         players = gameInfo.players
+        //Cannot use magic mirror on yourself
         let index = players.index(of: gameInfo.magicMirrorOwner)!
         players.remove(at: index)
         
@@ -39,6 +43,7 @@ class MagicMirrorViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableHeaderView = headerView
     }
     
+    //MARK: - TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = players[indexPath.row].name!
@@ -74,7 +79,7 @@ class MagicMirrorViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    
+    //MARK: - Segues
     @objc func nextButtonTapped(_ sender: UIButton) {
         if selectedPlayer != nil {
             performSegue(withIdentifier: "showUserClass", sender: self)

@@ -24,7 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Core data")
         print(urls[urls.count-1] as URL)
         
+        
         do {
+            //Create 7 players if first time loaded
             let players: [Player] = try managedContext.fetch(Player.fetchRequest())
             if players.count == 0 {
                 for i in 0..<7 {
@@ -52,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             let classes: [GameClass] = try managedContext.fetch(GameClass.fetchRequest())
             
+            //Create neccessary classes if first time loaded
             if classes.count == 0 {
                 for i in 0..<7 {
                     let newClass = GameClass(context: managedContext)
@@ -97,6 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
             
+            //Create expansions
             let expansions: [Expansion] = try managedContext.fetch(Expansion.fetchRequest())
             
             if expansions.count == 0 {

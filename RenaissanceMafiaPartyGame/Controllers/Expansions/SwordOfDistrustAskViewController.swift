@@ -17,8 +17,11 @@ class SwordOfDistrustAskViewController: UIViewController {
     
     var swordOfDistrustAskView: SwordOfDistrustAskView!
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Setting up the view
         swordOfDistrustAskView = SwordOfDistrustAskView(frame: view.frame)
         swordOfDistrustAskView.askLabel.text = "Do you want to use the sword?\nDoing so will change the decision of one player.\nSuccess will become Failure and Failure will become Success.\nChoose wisely."
         swordOfDistrustAskView.yesButton.addTarget(self, action: #selector(yesButtonPressed(_:)), for: .touchUpInside)
@@ -26,6 +29,7 @@ class SwordOfDistrustAskViewController: UIViewController {
         view.addSubview(swordOfDistrustAskView)
     }
     
+    //MARK: - Buttons
     @objc func yesButtonPressed(_ sender: UIButton) {
         performSegue(withIdentifier: "swordOfDistrustUse", sender: self)
     }
@@ -34,6 +38,7 @@ class SwordOfDistrustAskViewController: UIViewController {
         performSegue(withIdentifier: "swordOfDistrustNotUse", sender: self)
     }
     
+    //MARK: - Segues
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "swordOfDistrustUse" {
             let controller = segue.destination as! SwordOfDistrustUseViewController

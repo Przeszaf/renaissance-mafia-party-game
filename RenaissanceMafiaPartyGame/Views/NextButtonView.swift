@@ -12,6 +12,7 @@ class NextButtonView: UIView {
     
     var button: UIButton!
     
+    //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         button = UIButton(type: .system)
@@ -34,6 +35,7 @@ class NextButtonView: UIView {
     
     func setup() {
         
+        //Creating path
         let shapeLayer = CAShapeLayer()
         let path = createBezierPath(x: 3, y: 3, radius: 10)
         shapeLayer.path = path.cgPath
@@ -45,7 +47,7 @@ class NextButtonView: UIView {
         self.layer.addSublayer(shapeLayer)
         
         
-        
+        //Creating Gradient
         let gradientFramePath = createBezierPath(x: 0, y: 0, radius: 10)
         let gradient = CAGradientLayer()
         gradient.frame = gradientFramePath.bounds
@@ -72,7 +74,6 @@ class NextButtonView: UIView {
         path.addArc(withCenter: centerPoint, radius: radius, startAngle: CGFloat(3*Double.pi / 2), endAngle: 0, clockwise: true)
         
         //Right line
-        //        path.move(to: CGPoint(x: self.frame.width - x, y: y + radius))
         path.addLine(to: CGPoint(x: self.frame.width - x, y: self.frame.height - y - radius))
         
         //Right-bottom arc
@@ -80,7 +81,6 @@ class NextButtonView: UIView {
         path.addArc(withCenter: centerPoint, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi / 2), clockwise: true)
         
         //Bottom line
-        //        path.move(to: CGPoint(x: self.frame.width - x - radius, y: self.frame.height - y))
         path.addLine(to: CGPoint(x: x + radius, y: self.frame.height - y))
         
         //Bottom-left line
@@ -88,7 +88,6 @@ class NextButtonView: UIView {
         path.addArc(withCenter: centerPoint, radius: radius, startAngle: CGFloat(Float.pi/2), endAngle: CGFloat(Float.pi), clockwise: true)
         
         //Left line
-        //        path.move(to: CGPoint(x: x, y: self.frame.height - y - radius))
         path.addLine(to: CGPoint(x: x, y: y + radius))
         
         //Top-left arc
@@ -96,6 +95,4 @@ class NextButtonView: UIView {
         path.addArc(withCenter: centerPoint, radius: radius, startAngle: CGFloat(Double.pi), endAngle: CGFloat(Double.pi*3 / 2), clockwise: true)
         return path
     }
-    
-    
 }

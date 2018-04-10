@@ -17,11 +17,13 @@ class SwordOfDistrustGiveViewController: UIViewController, TableButtonDelegate {
     var playersAvailable: [Player]!
     var selectedPlayer: Player?
     
+    
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         playersAvailable = selectedPlayers
-        print(selectedPlayers)
-        print(playersAvailable)
+        
+        //Cannot give sword to yourself
         if let index = playersAvailable.index(of: gameInfo.currentLeader) {
             playersAvailable.remove(at: index)
         }
@@ -38,6 +40,7 @@ class SwordOfDistrustGiveViewController: UIViewController, TableButtonDelegate {
     }
     
     
+    //MARK: - Segues
     func touchUp() {
         if selectedPlayer != nil {
             performSegue(withIdentifier: "swordOfDistrustAsk", sender: self)
@@ -55,12 +58,12 @@ class SwordOfDistrustGiveViewController: UIViewController, TableButtonDelegate {
     }
 }
 
+//MARK: - TableViewController
 class SwordOfDistrustGiveTableViewController: UITableViewController {
     var parentView: SwordOfDistrustGiveViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     

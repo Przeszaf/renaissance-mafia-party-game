@@ -15,9 +15,11 @@ class MagicMirrorResultViewController: UIViewController {
     var roundInfo: RoundInfo!
     var player: Player!
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setting up view
         magicMirrorResultView = MagicMirrorResultView(frame: view.frame)
         let playerClass = gameInfo.playersClasses[player]!
         magicMirrorResultView.classLabel.text = "\(player.name!) is \(playerClass.isGood ? "Good" : "Evil") character."
@@ -33,6 +35,7 @@ class MagicMirrorResultViewController: UIViewController {
         view.addSubview(magicMirrorResultView)
     }
     
+    //Change view when touches began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         if magicMirrorResultView.classLabel.isHidden {

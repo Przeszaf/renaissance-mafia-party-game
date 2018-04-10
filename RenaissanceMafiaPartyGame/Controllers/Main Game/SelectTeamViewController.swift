@@ -15,8 +15,11 @@ class SelectTeamViewController: UIViewController, TableButtonDelegate {
     var numberOfPlayers: Int!
     var selectedPlayers = [Player]()
     
+    //MARK: - Lifecycle of VC
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Setup children view controllers
         
         let tableView = self.childViewControllers.first as! SelectTeamTableViewController
         tableView.players = gameInfo.players
@@ -34,6 +37,7 @@ class SelectTeamViewController: UIViewController, TableButtonDelegate {
     }
     
 
+    //MARK: - Segues
     @objc func touchUp() {
         if selectedPlayers.count == numberOfPlayers {
             performSegue(withIdentifier: "askMissionAgreement", sender: self)
@@ -51,7 +55,7 @@ class SelectTeamViewController: UIViewController, TableButtonDelegate {
 }
 
 
-
+//MARK: - TableViewController
 class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, UINavigationControllerDelegate {
     
     var players: [Player]!
@@ -59,7 +63,7 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
     
     var selectTeamViewController: SelectTeamViewController!
     
-    //MARK: - Overriding functions
+    //MARK: - Lifetime
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
@@ -73,7 +77,7 @@ class SelectTeamTableViewController: UITableViewController, UITextViewDelegate, 
     }
     
     
-    //MARK: - UITableView - conforming etc
+    //MARK: - UITableView
     
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         let player = players[indexPath.row]
